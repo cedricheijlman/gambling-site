@@ -1,28 +1,45 @@
+/* ---- Homepage Front ------ */
+
 .homepage__container {
   display: flex;
-  flex-direction: color;
+  color: white;
   height: 100%;
+  flex-direction: column;
 }
 
 .homepage__front {
   width: 100%;
-  height: 100vh;
+
   position: relative;
+  height: 100vh;
   display: flex;
 }
 
 .homepage__frontText {
   color: white;
-  font-size: 35px;
-  padding: 18% 10%;
+  font-size: 39px;
+  padding: 250px 11%;
+  height: 100%;
   z-index: 999;
 }
 
 .homepage__container img {
-  filter: brightness(0.5);
+  filter: brightness(1.3);
+  height: 90vh;
   width: 100%;
   position: absolute;
+  box-shadow: rgba(255, 254, 254, 0.1) 0px 10px 15px -3px,
+    rgba(250, 250, 250, 0.05) 0px 4px 6px -2px;
   object-fit: cover;
-  height: 100vh;
-  clip-path: polygon(0 0, 100% 0%, 100% 61%, 0 77%);
+}
+
+/* ---- Homepage Features ------ */
+
+.homepage__features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.homepage__features h2 {
 }

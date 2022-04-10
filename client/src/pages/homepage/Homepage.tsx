@@ -1,4 +1,5 @@
 import React from "react";
+import LoginButton from "../../components/buttons/Loginbuttons";
 import Navbar from "../../components/navbar/Navbar";
 import "./Homepage.css";
 
@@ -10,8 +11,15 @@ const Homepage: React.FC = () => {
           <h2>
             The Online <br /> Betting Game
           </h2>
+          <LoginButton>Signup</LoginButton>
         </div>
         <img src="./homepage-background.jpg" />
+      </div>
+      <div className="homepage__features">
+        <div>
+          <h2>Our Features</h2>
+          <div className="homepage__featuresCards"></div>
+        </div>
       </div>
     </div>
   );
