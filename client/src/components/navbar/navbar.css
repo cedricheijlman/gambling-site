@@ -1,0 +1,16 @@
+.navbar {
+  /* background-color: #373737; */
+  background-color: transparent;
+  padding: 15px 25px;
+  color: white;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  justify-content: space-between;
+  display: flex;
+  z-index: 99;
+}
+
+.navbar h2 {
+  font-size: 27px;
+}

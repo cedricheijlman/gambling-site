@@ -1,0 +1,18 @@
+.loginButtonsFC {
+  margin: 0 10px;
+  border: none;
+  outline: none;
+  padding: 8px 15px;
+  background-color: #46464646;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: "Poppins";
+  border: 1px solid #797676a5;
+  font-size: 15px;
+}
+
+.loginButtonsFC:hover {
+  border: 1px solid #a5a5a5;
+}
