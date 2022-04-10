@@ -9,22 +9,31 @@
 
 .homepage__front {
   width: 100%;
-
+  flex-direction: column;
   position: relative;
   height: 100vh;
   display: flex;
+  align-items: center;
 }
 
 .homepage__frontText {
   color: white;
-  font-size: 39px;
-  padding: 250px 11%;
+  font-size: 45px;
+  width: 100%;
+  height: 80vh;
+  padding: 250px 9%;
   height: 100%;
-  z-index: 999;
+  z-index: 9;
 }
 
-.homepage__container img {
-  filter: brightness(1.3);
+.homepage__frontText p {
+  margin-top: 10px;
+  font-size: 18px;
+  color: rgb(184, 178, 178);
+}
+
+.homepage__container .homepage__background {
+  filter: brightness(0.3);
   height: 90vh;
   width: 100%;
   position: absolute;
@@ -33,13 +42,17 @@
   object-fit: cover;
 }
 
+.scroll {
+  color: red;
+
+  margin-bottom: 20px;
+  width: 50px;
+}
+
 /* ---- Homepage Features ------ */
 
 .homepage__features {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.homepage__features h2 {
 }
