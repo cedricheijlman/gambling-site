@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Login.css";
 
 export const Login: React.FC = () => {
@@ -11,6 +12,12 @@ export const Login: React.FC = () => {
         <p>Login into your account</p>
         <input placeholder="Username" />
         <input type="password" placeholder="Password" />
+        <p>
+          Don't have an account yet?{" "}
+          <Link to="/register">
+            <span>Signup</span>
+          </Link>
+        </p>
         <button>Login</button>
       </form>
     </div>

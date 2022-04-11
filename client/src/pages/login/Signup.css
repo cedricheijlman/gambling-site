@@ -1,4 +1,4 @@
-.login__container {
+.signup__container {
   color: white;
   width: 100%;
   flex-direction: column;
@@ -9,11 +9,11 @@
   position: relative;
 }
 
-.login__container h1 {
+.signup__container h1 {
   font-size: 49px;
 }
 
-.login__background {
+.signup__background {
   position: absolute;
   width: 100%;
   z-index: -1;
@@ -22,7 +22,7 @@
   filter: brightness(0.3) blur(3px);
 }
 
-.login__form {
+.signup__form {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: rgba(42, 42, 42, 0.484);
   padding: 35px 15px;
@@ -35,22 +35,22 @@
   align-items: center;
 }
 
-.login__form h2 {
+.signup__form h2 {
   width: 80%;
 }
 
-.login__form p {
+.signup__form p {
   width: 80%;
   margin-bottom: 15px;
   margin-top: 5px;
   color: rgb(177, 177, 177);
 }
 
-.login__form a {
+.signup__form a {
   text-decoration: underline;
 }
 
-.login__form input {
+.signup__form input {
   border: none;
   outline: none;
   background-color: rgba(67, 67, 70, 0.152);
@@ -63,7 +63,7 @@
   color: rgb(221, 220, 220);
 }
 
-.login__form button {
+.signup__form button {
   padding: 10px 0;
   width: 80%;
   border-radius: 5px;
@@ -77,6 +77,6 @@
   cursor: pointer;
 }
 
-.login__form button:hover {
+.signup__form button:hover {
   transform: scale(1.011);
 }
