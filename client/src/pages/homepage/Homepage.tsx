@@ -12,7 +12,7 @@ const Homepage: React.FC = () => {
             The Online <br /> Betting Game
           </h2>
           <p>Signup today to play the best game alive!</p>
-          <LoginButton>Signup</LoginButton>
+          <LoginButton login="signup">Signup</LoginButton>
         </div>
         <img className="homepage__background" src="./background-homepage.jpg" />
       </div>

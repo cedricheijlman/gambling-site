@@ -48,14 +48,12 @@
 .scroll {
   color: red;
 
-  margin-bottom: 20px;
   width: 50px;
 }
 
 /* ---- Homepage Features ------ */
 
 .homepage__features {
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;

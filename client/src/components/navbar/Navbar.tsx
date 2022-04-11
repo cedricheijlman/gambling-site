@@ -7,8 +7,8 @@ const Navbar: React.FC = () => {
     <nav className="navbar">
       <h2>BettingBall</h2>
       <div className="navbar__right">
-        <LoginButton>Login</LoginButton>
-        <LoginButton>Signup</LoginButton>
+        <LoginButton login="login">Login</LoginButton>
+        <LoginButton login="signup">Signup</LoginButton>
       </div>
     </nav>
   );
