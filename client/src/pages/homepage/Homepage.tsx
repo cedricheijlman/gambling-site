@@ -15,7 +15,6 @@ const Homepage: React.FC = () => {
           <LoginButton>Signup</LoginButton>
         </div>
         <img className="homepage__background" src="./background-homepage.jpg" />
-        <img className="scroll" src="./arrow-down-1.gif" />
       </div>
       <div className="homepage__features">
         <div>

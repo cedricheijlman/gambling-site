@@ -3,7 +3,7 @@
 .homepage__container {
   display: flex;
   color: white;
-  height: 100%;
+
   flex-direction: column;
 }
 
@@ -12,6 +12,7 @@
   flex-direction: column;
   position: relative;
   height: 100vh;
+  min-height: 50em;
   display: flex;
   align-items: center;
 }
@@ -36,6 +37,8 @@
   filter: brightness(0.3);
   height: 90vh;
   width: 100%;
+  min-height: 45em;
+  max-height: 90vh;
   position: absolute;
   box-shadow: rgba(255, 254, 254, 0.1) 0px 10px 15px -3px,
     rgba(250, 250, 250, 0.05) 0px 4px 6px -2px;
@@ -52,6 +55,7 @@
 /* ---- Homepage Features ------ */
 
 .homepage__features {
+  border: 1px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
