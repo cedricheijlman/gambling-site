@@ -16,6 +16,7 @@ const Homepage: React.FC = () => {
         </div>
         <img className="homepage__background" src="./background-homepage.jpg" />
       </div>
+
       <div className="homepage__features">
         <div>
           <h2>Our Features</h2>

@@ -13,6 +13,8 @@
   font-size: 49px;
 }
 
+/* ----- Login Background ----- */
+
 .login__background {
   position: absolute;
   width: 100%;
@@ -21,6 +23,8 @@
   object-fit: cover;
   filter: brightness(0.3) blur(3px);
 }
+
+/* ----- Login Form ----- */
 
 .login__form {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
