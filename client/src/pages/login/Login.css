@@ -1,0 +1,78 @@
+.login__container {
+  color: white;
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+  position: relative;
+}
+
+.login__container h1 {
+  font-size: 49px;
+}
+
+.login__background {
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+  height: 100vh;
+  object-fit: cover;
+  filter: brightness(0.3) blur(3px);
+}
+
+.login__form {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: rgba(42, 42, 42, 0.484);
+  padding: 35px 15px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+  margin-top: 50px;
+  align-items: center;
+}
+
+.login__form h2 {
+  width: 80%;
+}
+
+.login__form p {
+  width: 80%;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  color: rgb(177, 177, 177);
+}
+
+.login__form input {
+  border: none;
+  outline: none;
+  background-color: rgba(67, 67, 70, 0.152);
+  border: 1px solid rgba(168, 168, 168, 0.307);
+  border-radius: 5px;
+  margin: 6px 0;
+  padding: 10px 10px;
+  font-size: 15px;
+  width: 80%;
+  color: rgb(221, 220, 220);
+}
+
+.login__form button {
+  padding: 10px 0;
+  width: 80%;
+  border-radius: 5px;
+  background-color: rgba(163, 161, 161, 0.845);
+  font-family: "Poppins";
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+  border: none;
+  margin-top: 15px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.login__form button:hover {
+  transform: scale(1.011);
+}
