@@ -5,13 +5,13 @@ An online betting site where you can play betting games with fake money and can 
 * Typescript
 * HTML/CSS
 * React
+* Redux
 * Node.js
 * Express
 * Python AI probability scripts
 * PostgresSQL
 * Sequelize?
 * Socket.io
-* Passport.JS (Authentication)
-* Amazon RDS (AWS)
+* JWT Authentication
 
 #
