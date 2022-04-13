@@ -1,8 +1,12 @@
 import express, { Request, Response } from "express";
-const { playerLogin } = require("../controllers/playerControllers");
+const {
+  playerLogin,
+  playerRegister,
+} = require("../controllers/playerControllers");
 
 const router = express.Router();
 
-router.get("/hello", playerLogin);
+router.get("/login", playerLogin);
+router.get("/register", playerRegister);
 
 module.exports = router;
