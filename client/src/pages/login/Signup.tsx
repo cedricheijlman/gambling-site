@@ -1,27 +1,58 @@
 import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Signup.css";
 
 const Signup: React.FC = () => {
+  // Register inputs
+  const [username, setUsername] = useState<string | undefined>("");
+  const [password, setPassword] = useState<string | undefined>("");
+  const [email, setEmail] = useState<string | undefined>("");
+
+  // HandleFormSubmit
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(username, password, email);
+  };
+
   return (
     <div className="signup__container">
       <img className="signup__background" src="./loginbackground.jpg" />
       <h1>Betting Ball</h1>
-      <form className="signup__form">
+      <form onSubmit={handleSubmit} className="signup__form">
         <h2>Create your account</h2>
         <p className="signup__formDescription">
           To access the game you need to have an account!
         </p>
-        <input placeholder="Username" />
-        <input placeholder="Email" />
-        <input type="password" placeholder="Password" />
+        <input
+          value={username}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setUsername(e.target.value);
+          }}
+          placeholder="Username"
+        />
+        <input
+          value={email}
+          placeholder="Email"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setEmail(e.target.value);
+          }}
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setPassword(e.target.value);
+          }}
+          placeholder="Password"
+        />
         <p>
           Already a member?{" "}
           <Link to="/login">
             <span>Login</span>
           </Link>
         </p>
-        <button>Login</button>
+        <button>Sign Up</button>
       </form>
     </div>
   );
