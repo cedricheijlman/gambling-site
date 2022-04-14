@@ -39,6 +39,18 @@
   align-items: center;
 }
 
+.form__label {
+  width: 79%;
+  margin-top: 10px;
+  display: flex;
+  color: rgb(166, 165, 165);
+  justify-content: space-between;
+}
+
+.signup__form h4:nth-of-type(1) {
+  margin-top: 3px !important;
+}
+
 .signup__form h2 {
   width: 80%;
 }
@@ -60,7 +72,8 @@
   background-color: rgba(67, 67, 70, 0.152);
   border: 1px solid rgba(168, 168, 168, 0.307);
   border-radius: 5px;
-  margin: 6px 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
   padding: 10px 10px;
   font-size: 15px;
   width: 80%;

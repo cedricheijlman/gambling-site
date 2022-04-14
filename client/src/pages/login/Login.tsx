@@ -32,20 +32,24 @@ export const Login: React.FC = () => {
       <form onSubmit={handleSubmit} className="login__form">
         <h2>Sign in</h2>
         <p>Login into your account</p>
+        <div className="form__label">
+          <h4>Username</h4>
+        </div>
         <input
           value={username}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setUsername(e.target.value);
           }}
-          placeholder="Username"
         />
+        <div className="form__label">
+          <h4>Password</h4>
+        </div>
         <input
           value={password}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setPassword(e.target.value);
           }}
           type="password"
-          placeholder="Password"
         />
         <p>
           Don't have an account yet?{" "}

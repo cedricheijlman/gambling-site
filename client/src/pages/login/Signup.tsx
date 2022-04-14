@@ -36,27 +36,33 @@ const Signup: React.FC = () => {
         <p className="signup__formDescription">
           To access the game you need to have an account!
         </p>
+        <div className="form__label">
+          <h4>Username</h4>
+        </div>
         <input
           value={username}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setUsername(e.target.value);
           }}
-          placeholder="Username"
         />
+        <div className="form__label">
+          <h4>Email</h4>
+        </div>
         <input
           value={email}
-          placeholder="Email"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setEmail(e.target.value);
           }}
         />
+        <div className="form__label">
+          <h4>Password</h4>
+        </div>
         <input
           type="password"
           value={password}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setPassword(e.target.value);
           }}
-          placeholder="Password"
         />
         <p>
           Already a member?{" "}

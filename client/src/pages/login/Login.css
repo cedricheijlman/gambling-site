@@ -43,6 +43,13 @@
   width: 80%;
 }
 
+.form__label {
+  width: 79%;
+  display: flex;
+  justify-content: space-between;
+  color: rgb(166, 165, 165);
+}
+
 .login__form p {
   width: 80%;
   margin-bottom: 15px;

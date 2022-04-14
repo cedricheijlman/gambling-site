@@ -8,28 +8,38 @@ const playerLogin = async (req: Request, res: Response) => {
   try {
     const { username, password } = req.body;
 
+    // Check if player exists
     const findPlayer = await Player.findOne({
       where: {
         username,
       },
     });
 
+    // if player doesn't exists
     if (findPlayer === null) {
-      return res.status(200).json({ message: "Wrong credentials" });
+      return res
+        .status(400)
+        .json({ errorCode: 0, message: "User/player doesn't exist" });
     }
 
+    // compare passwords
     const check = await bcrypt.compare(password, findPlayer.password);
 
+    // if password doesn't match
     if (!check) {
-      return res.status(200).json({ message: "wrong" });
+      return res
+        .status(400)
+        .json({ errorCode: 1, message: "Wrong Credentials" });
     }
 
+    // user is logged in
     return res.status(200).json({
       message: "User logged in",
     });
   } catch (error) {
-    res.status(200).json({
-      message: "error",
+    res.status(400).json({
+      errorCode: 2,
+      Message: "Server Error",
     });
   }
 };
@@ -38,18 +48,24 @@ const playerRegister = async (req: Request, res: Response) => {
   try {
     const { username, email, password } = req.body;
 
+    // Check if user exists
     const findPlayer = await Player.findOne({
       where: {
         [Op.or]: [{ username }, { email }],
       },
     });
 
+    // if user exits
     if (findPlayer !== null) {
-      return res.status(200).json({ message: "Player already exists" });
+      return res
+        .status(400)
+        .json({ errorCode: 0, message: "Player already exists" });
     }
 
+    // hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // create new user/player
     const newUser = await Player.create({
       username,
       email,
@@ -61,7 +77,8 @@ const playerRegister = async (req: Request, res: Response) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(200).json({
+    res.status(400).json({
+      errorCode: 1,
       message: "error",
     });
   }
