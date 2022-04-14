@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -12,6 +13,16 @@ export const Login: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(username, password);
+    if (username !== "" && password !== "") {
+      axios
+        .post(`${process.env.REACT_APP_BACKEND}/api/login`, {
+          username,
+          password,
+        })
+        .then((res) => {
+          console.log(res);
+        });
+    }
   };
 
   return (

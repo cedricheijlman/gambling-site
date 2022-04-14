@@ -4,9 +4,28 @@ const { Op } = require("sequelize");
 const Player = require("../models/player");
 
 const playerLogin = async (req: Request, res: Response) => {
-  res.status(200).json({
-    message: "Player Login Route",
-  });
+  try {
+    const { username, password } = req.body;
+
+    const findPlayer = await Player.findOne({
+      where: {
+        username,
+        password,
+      },
+    });
+
+    if (findPlayer === null) {
+      return res.status(200).json({ message: "Wrong credentials" });
+    }
+
+    return res.status(200).json({
+      message: "User logged in",
+    });
+  } catch (error) {
+    res.status(200).json({
+      message: "error",
+    });
+  }
 };
 
 const playerRegister = async (req: Request, res: Response) => {
@@ -25,7 +44,7 @@ const playerRegister = async (req: Request, res: Response) => {
 
     const newUser = await Player.create({ username, email, password });
 
-    res.status(200).json({
+    return res.status(200).json({
       message: "User created",
     });
   } catch (error) {
