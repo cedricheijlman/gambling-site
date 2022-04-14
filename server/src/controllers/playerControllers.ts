@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import bcrypt from "bcrypt";
 const { Op } = require("sequelize");
 
 const Player = require("../models/player");
@@ -10,12 +11,17 @@ const playerLogin = async (req: Request, res: Response) => {
     const findPlayer = await Player.findOne({
       where: {
         username,
-        password,
       },
     });
 
     if (findPlayer === null) {
       return res.status(200).json({ message: "Wrong credentials" });
+    }
+
+    const check = await bcrypt.compare(password, findPlayer.password);
+
+    if (!check) {
+      return res.status(200).json({ message: "wrong" });
     }
 
     return res.status(200).json({
@@ -42,7 +48,13 @@ const playerRegister = async (req: Request, res: Response) => {
       return res.status(200).json({ message: "Player already exists" });
     }
 
-    const newUser = await Player.create({ username, email, password });
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = await Player.create({
+      username,
+      email,
+      password: hashedPassword,
+    });
 
     return res.status(200).json({
       message: "User created",
