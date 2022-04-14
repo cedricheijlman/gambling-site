@@ -7,12 +7,28 @@ import "./Login.css";
 export const Login: React.FC = () => {
   // Login inputs
   const [username, setUsername] = useState<string | undefined>("");
+  const [usernameError, setUsernameError] = useState("");
   const [password, setPassword] = useState<string | undefined>("");
 
   // handleFormSubmit
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(username, password);
+
+    // reset error messages
+    setUsernameError("");
+
+    // username length check
+    if (String(username).length > 15) {
+      setUsernameError("Username is too long,");
+    }
+
+    // username empty check
+    if (username == "") {
+      setUsernameError("Enter username");
+    }
+
+    // password empty check
+
     if (username !== "" && password !== "") {
       axios
         .post(`${process.env.REACT_APP_BACKEND}/api/login`, {
@@ -34,6 +50,9 @@ export const Login: React.FC = () => {
         <p>Login into your account</p>
         <div className="form__label">
           <h4>Username</h4>
+          {usernameError !== "" && (
+            <h4 className="form__errorMessage">{usernameError}</h4>
+          )}
         </div>
         <input
           value={username}

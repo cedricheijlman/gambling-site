@@ -47,6 +47,10 @@
   justify-content: space-between;
 }
 
+.form__errorMessage {
+  color: rgba(205, 2, 2, 0.644);
+}
+
 .signup__form h4:nth-of-type(1) {
   margin-top: 3px !important;
 }

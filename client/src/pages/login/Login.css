@@ -43,11 +43,8 @@
   width: 80%;
 }
 
-.form__label {
-  width: 79%;
-  display: flex;
-  justify-content: space-between;
-  color: rgb(166, 165, 165);
+.form__errorMessage {
+  color: rgba(205, 2, 2, 0.644);
 }
 
 .login__form p {
