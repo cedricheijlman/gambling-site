@@ -13,5 +13,6 @@ An online betting site where you can play betting games with fake money and can 
 * Sequelize?
 * Socket.io
 * JWT Authentication
+* Bcrypt Hashing passwords library
 
 #
