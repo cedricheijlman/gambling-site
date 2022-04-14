@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -13,6 +14,17 @@ const Signup: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(username, password, email);
+    if (username !== "" && password !== "" && email !== "") {
+      axios
+        .post(`${process.env.REACT_APP_BACKEND}/api/register`, {
+          username: username,
+          password: password,
+          email: email,
+        })
+        .then((res) => {
+          console.log(res);
+        });
+    }
   };
 
   return (

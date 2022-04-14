@@ -6,7 +6,7 @@ const {
 
 const router = express.Router();
 
-router.get("/login", playerLogin);
-router.get("/register", playerRegister);
+router.post("/login", playerLogin);
+router.post("/register", playerRegister);
 
 module.exports = router;

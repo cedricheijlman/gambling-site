@@ -1,4 +1,6 @@
 import express, { Application, Request, Response } from "express";
+const cors = require("cors");
+
 import "dotenv/config";
 require("dotenv").config();
 const db = require("./config/database.config");
@@ -7,6 +9,9 @@ const playerRouter = require("./routes/playerRoutes");
 
 const app: Application = express();
 const PORT = process.env.port || 5000;
+
+app.use(cors());
+app.use(express.json());
 
 app.get("/", (req: Request, res: Response) => {
   res.send("hello");
