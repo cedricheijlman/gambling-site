@@ -3,8 +3,11 @@
   justify-content: space-between;
   align-items: center;
   display: flex;
-  background-color: rgb(32, 31, 31);
+
+  width: 100%;
+  background-color: rgba(32, 31, 31, 0.62);
   box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  z-index: 99;
 }
 
 .dashboard__nav .nav__right {

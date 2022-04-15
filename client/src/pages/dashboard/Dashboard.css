@@ -16,6 +16,12 @@
   align-items: center;
 }
 
+.te {
+  background-color: rgba(83, 83, 83, 0.268);
+  width: 80%;
+  height: 90%;
+}
+
 .games__carousel {
   display: flex;
   width: 100%;
@@ -44,7 +50,7 @@
 
   width: 20%;
   height: 300px;
-  color: black;
+  color: white;
   border-radius: 10px;
   transition: all 0.5s;
   margin-bottom: 12px;

@@ -25,7 +25,11 @@ export const Dashboard: React.FC = () => {
         </div>
       )}
 
-      {window.location.pathname == "/singlestake" && <h1>Single Stake</h1>}
+      {window.location.pathname == "/singlestake" && (
+        <div className="dashboardContainer">
+          <div className="te">Word</div>
+        </div>
+      )}
     </div>
   );
 };
