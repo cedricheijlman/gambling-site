@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Navbar from "../../components/navbar/Navbar";
 import "./Login.css";
 
 export const Login: React.FC = () => {
@@ -52,6 +53,8 @@ export const Login: React.FC = () => {
           if (res.data.errorCode == 1) {
             return setPasswordError(res.data.message);
           }
+
+          window.location.pathname = "/dashboard";
         })
         .catch(() => {
           window.location.pathname = "/";
@@ -60,45 +63,48 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <div className="login__container">
-      <img className="login__background" src="./loginbackground.jpg" />
-      <h1>Betting Ball</h1>
-      <form onSubmit={handleSubmit} className="login__form">
-        <h2>Sign in</h2>
-        <p>Login into your account</p>
-        <div className="form__label">
-          <h4>Username</h4>
-          {usernameError !== "" && (
-            <h4 className="form__errorMessage">{usernameError}</h4>
-          )}
-        </div>
-        <input
-          value={username}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setUsername(e.target.value);
-          }}
-        />
-        <div className="form__label">
-          <h4>Password</h4>
-          {passwordError !== "" && (
-            <h4 className="form__errorMessage">{passwordError}</h4>
-          )}
-        </div>
-        <input
-          value={password}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setPassword(e.target.value);
-          }}
-          type="password"
-        />
-        <p>
-          Don't have an account yet?{" "}
-          <Link to="/register">
-            <span>Signup</span>
-          </Link>
-        </p>
-        <button>Login</button>
-      </form>
-    </div>
+    <>
+      <Navbar />
+      <div className="login__container">
+        <img className="login__background" src="./loginbackground.jpg" />
+        <h1>Betting Ball</h1>
+        <form onSubmit={handleSubmit} className="login__form">
+          <h2>Sign in</h2>
+          <p>Login into your account</p>
+          <div className="form__label">
+            <h4>Username</h4>
+            {usernameError !== "" && (
+              <h4 className="form__errorMessage">{usernameError}</h4>
+            )}
+          </div>
+          <input
+            value={username}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setUsername(e.target.value);
+            }}
+          />
+          <div className="form__label">
+            <h4>Password</h4>
+            {passwordError !== "" && (
+              <h4 className="form__errorMessage">{passwordError}</h4>
+            )}
+          </div>
+          <input
+            value={password}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setPassword(e.target.value);
+            }}
+            type="password"
+          />
+          <p>
+            Don't have an account yet?{" "}
+            <Link to="/register">
+              <span>Signup</span>
+            </Link>
+          </p>
+          <button>Login</button>
+        </form>
+      </div>
+    </>
   );
 };

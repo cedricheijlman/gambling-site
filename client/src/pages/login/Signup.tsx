@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Navbar from "../../components/navbar/Navbar";
 import "./Signup.css";
 
 const Signup: React.FC = () => {
@@ -60,67 +61,73 @@ const Signup: React.FC = () => {
           if (res.data.errorCode == 0.1) {
             return setEmailError(res.data.message);
           }
-
+          window.location.pathname = "/dashboard";
           console.log(res);
+        })
+        .catch(() => {
+          window.location.pathname = "/";
         });
     }
   };
 
   return (
-    <div className="signup__container">
-      <img className="signup__background" src="./loginbackground.jpg" />
-      <h1>Betting Ball</h1>
-      <form onSubmit={handleSubmit} className="signup__form">
-        <h2>Create your account</h2>
-        <p className="signup__formDescription">
-          To access the game you need to have an account!
-        </p>
-        <div className="form__label">
-          <h4>Username</h4>
-          {usernameError !== "" && (
-            <h4 className="form__errorMessage">{usernameError}</h4>
-          )}
-        </div>
-        <input
-          value={username}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setUsername(e.target.value);
-          }}
-        />
-        <div className="form__label">
-          <h4>Email</h4>
-          {emailError !== "" && (
-            <h4 className="form__errorMessage">{emailError}</h4>
-          )}
-        </div>
-        <input
-          value={email}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setEmail(e.target.value);
-          }}
-        />
-        <div className="form__label">
-          <h4>Password</h4>
-          {passwordError !== "" && (
-            <h4 className="form__errorMessage">{passwordError}</h4>
-          )}
-        </div>
-        <input
-          type="password"
-          value={password}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <p>
-          Already a member?{" "}
-          <Link to="/login">
-            <span>Login</span>
-          </Link>
-        </p>
-        <button>Sign Up</button>
-      </form>
-    </div>
+    <>
+      <Navbar />
+      <div className="signup__container">
+        <img className="signup__background" src="./loginbackground.jpg" />
+        <h1>Betting Ball</h1>
+        <form onSubmit={handleSubmit} className="signup__form">
+          <h2>Create your account</h2>
+          <p className="signup__formDescription">
+            To access the game you need to have an account!
+          </p>
+          <div className="form__label">
+            <h4>Username</h4>
+            {usernameError !== "" && (
+              <h4 className="form__errorMessage">{usernameError}</h4>
+            )}
+          </div>
+          <input
+            value={username}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setUsername(e.target.value);
+            }}
+          />
+          <div className="form__label">
+            <h4>Email</h4>
+            {emailError !== "" && (
+              <h4 className="form__errorMessage">{emailError}</h4>
+            )}
+          </div>
+          <input
+            value={email}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setEmail(e.target.value);
+            }}
+          />
+          <div className="form__label">
+            <h4>Password</h4>
+            {passwordError !== "" && (
+              <h4 className="form__errorMessage">{passwordError}</h4>
+            )}
+          </div>
+          <input
+            type="password"
+            value={password}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setPassword(e.target.value);
+            }}
+          />
+          <p>
+            Already a member?{" "}
+            <Link to="/login">
+              <span>Login</span>
+            </Link>
+          </p>
+          <button>Sign Up</button>
+        </form>
+      </div>
+    </>
   );
 };
 

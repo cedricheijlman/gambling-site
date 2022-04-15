@@ -6,14 +6,15 @@ import Homepage from "./pages/homepage/Homepage";
 import Navbar from "./components/navbar/Navbar";
 import { Login } from "./pages/login/Login";
 import Signup from "./pages/login/Signup";
+import { Dashboard } from "./pages/dashboard/Dashboard";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Navbar />
       <Routes>
         <Route path="/register" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/" element={<Homepage />} />
       </Routes>
     </div>
