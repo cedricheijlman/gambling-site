@@ -22,11 +22,11 @@ const NavbarDashboard: React.FC = () => {
       <div className="nav__right">
         <div className="nav__rightMoneyContainer">
           <p>$3105.00</p>
-          <button>Deposit</button>
+          <button>Wallet</button>
         </div>
-        <div>
+        <div className="nav__rightName">
           <p>Username</p>
-          <button>Logout</button>
+          <button>Log Out</button>
         </div>
         <img height={40} width={40} src="./logo192.png" />
       </div>

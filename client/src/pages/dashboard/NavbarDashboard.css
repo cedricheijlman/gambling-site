@@ -15,15 +15,51 @@
 .nav__rightMoneyContainer {
   display: flex;
   margin-right: 35px;
+  align-items: center;
+}
+
+.nav__rightName {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav__rightName p {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.nav__rightName button {
+  border: none;
+  background-color: transparent;
+  text-align: right;
+  color: grey;
+  font-size: 13px;
+  font-family: "Poppins";
 }
 
 .nav__rightMoneyContainer button {
-  margin-left: 10px;
+  margin-left: 13px;
+  margin-right: 5px;
+  padding: 11px 30px;
+  border-radius: 7px;
+  font-family: "Poppins";
+  font-weight: 800;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  outline: none;
+  background-color: rgb(185, 33, 33);
+  border: none;
+}
+
+.nav__rightMoneyContainer button:hover {
+  cursor: pointer;
 }
 
 .dashboard__nav img {
   background-color: white;
   border-radius: 13px;
+  margin-left: 15px;
 }
 
 .dashboard__options {
