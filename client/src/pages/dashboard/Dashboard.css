@@ -1,0 +1,6 @@
+.dashboardContainer {
+  display: flex;
+  width: 100%;
+  color: white;
+  flex-direction: column;
+}

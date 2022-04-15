@@ -1,0 +1,37 @@
+.dashboard__nav {
+  padding: 15px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  background-color: rgb(30, 29, 29);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+}
+
+.dashboard__nav .nav__right {
+  display: flex;
+  align-items: center;
+}
+
+.nav__rightMoneyContainer {
+  display: flex;
+  margin-right: 35px;
+}
+
+.nav__rightMoneyContainer button {
+  margin-left: 10px;
+}
+
+.dashboard__nav img {
+  background-color: white;
+  border-radius: 13px;
+}
+
+.dashboard__options {
+  display: flex;
+}
+
+.dashboard__options p {
+  margin: 0 15px;
+  text-transform: uppercase;
+  font-weight: 900;
+}
