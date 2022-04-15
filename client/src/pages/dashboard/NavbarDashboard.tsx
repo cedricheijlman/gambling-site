@@ -10,14 +10,10 @@ const NavbarDashboard: React.FC = () => {
           {" "}
           <p>Dashboard</p>
         </Link>
-
-        <Link to={"/singlestake"}>
-          <p>Single Stake</p>
-        </Link>
-        <p>Multi Stake</p>
-
-        <p>Roulette</p>
+        <p>Games</p>
         <p>Leaderboard</p>
+        <p>Store</p>
+        <p>FAQ</p>
       </div>
       <div className="nav__right">
         <div className="nav__rightMoneyContainer">

@@ -10,23 +10,8 @@ export const Dashboard: React.FC = () => {
       {window.location.pathname == "/dashboard" && (
         <div className="dashboardContainer">
           <div className="check">
-            <p>Single Player</p>
+            <p>Featured Games</p>
             <div className="games__carousel">
-              <div className="game__item">Dice</div>
-              <div className="game__item">Dice</div>
-              <div className="game__item">Dice</div>
-              <div className="game__item">Dice</div>
-              <div className="game__item">Dice</div>
-              <div className="game__item">Dice</div>
-              <div className="game__item">Dice</div>
-              <div className="game__item">Dice</div>
-              <div className="game__item">Dice</div>
-            </div>
-          </div>
-          <div className="check">
-            <p>Multi Player</p>
-            <div className="games__carousel">
-              <div className="game__item">Dice</div>
               <div className="game__item">Dice</div>
               <div className="game__item">Dice</div>
               <div className="game__item">Dice</div>
