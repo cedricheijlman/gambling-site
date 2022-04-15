@@ -18,8 +18,8 @@ const playerLogin = async (req: Request, res: Response) => {
     // if player doesn't exists
     if (findPlayer === null) {
       return res
-        .status(400)
-        .json({ errorCode: 0, message: "User/player doesn't exist" });
+        .status(200)
+        .json({ errorCode: 0, message: "No user with username exist" });
     }
 
     // compare passwords
@@ -28,7 +28,7 @@ const playerLogin = async (req: Request, res: Response) => {
     // if password doesn't match
     if (!check) {
       return res
-        .status(400)
+        .status(200)
         .json({ errorCode: 1, message: "Wrong Credentials" });
     }
 

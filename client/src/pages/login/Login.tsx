@@ -8,7 +8,9 @@ export const Login: React.FC = () => {
   // Login inputs
   const [username, setUsername] = useState<string | undefined>("");
   const [usernameError, setUsernameError] = useState("");
+
   const [password, setPassword] = useState<string | undefined>("");
+  const [passwordError, setPasswordError] = useState("");
 
   // handleFormSubmit
   const handleSubmit = (e: React.FormEvent) => {
@@ -16,6 +18,7 @@ export const Login: React.FC = () => {
 
     // reset error messages
     setUsernameError("");
+    setPasswordError("");
 
     // username length check
     if (String(username).length > 15) {
@@ -27,6 +30,10 @@ export const Login: React.FC = () => {
       setUsernameError("Enter username");
     }
 
+    if (password == "") {
+      setPasswordError("Enter password");
+    }
+
     // password empty check
 
     if (username !== "" && password !== "") {
@@ -36,7 +43,18 @@ export const Login: React.FC = () => {
           password,
         })
         .then((res) => {
-          console.log(res);
+          // username doesn't exist
+          if (res.data.errorCode == 0) {
+            return setUsernameError(res.data.message);
+          }
+
+          // password wrong
+          if (res.data.errorCode == 1) {
+            return setPasswordError(res.data.message);
+          }
+        })
+        .catch(() => {
+          window.location.pathname = "/";
         });
     }
   };
@@ -62,6 +80,9 @@ export const Login: React.FC = () => {
         />
         <div className="form__label">
           <h4>Password</h4>
+          {passwordError !== "" && (
+            <h4 className="form__errorMessage">{passwordError}</h4>
+          )}
         </div>
         <input
           value={password}
