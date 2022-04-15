@@ -7,13 +7,44 @@ import "./Signup.css";
 const Signup: React.FC = () => {
   // Register inputs
   const [username, setUsername] = useState<string | undefined>("");
+  const [usernameError, setUsernameError] = useState("");
+
   const [password, setPassword] = useState<string | undefined>("");
+  const [passwordError, setPasswordError] = useState("");
+
   const [email, setEmail] = useState<string | undefined>("");
+  const [emailError, setEmailError] = useState("");
 
   // HandleFormSubmit
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(username, password, email);
+
+    // reset errors
+    setUsernameError("");
+    setPasswordError("");
+    setEmailError("");
+
+    // username length check
+    if (String(username).length > 15) {
+      setUsernameError("Username is too long.");
+    }
+
+    if (String(password).length > 35) {
+      setPasswordError("Password too long.");
+    }
+
+    if (username == "") {
+      setUsernameError("Username is blank");
+    }
+
+    if (password == "") {
+      setPasswordError("Password is blank");
+    }
+
+    if (email == "") {
+      setEmailError("Email is blank");
+    }
+
     if (username !== "" && password !== "" && email !== "") {
       axios
         .post(`${process.env.REACT_APP_BACKEND}/api/register`, {
@@ -22,6 +53,14 @@ const Signup: React.FC = () => {
           email: email,
         })
         .then((res) => {
+          if (res.data.errorCode == 0) {
+            return setUsernameError(res.data.message);
+          }
+
+          if (res.data.errorCode == 0.1) {
+            return setEmailError(res.data.message);
+          }
+
           console.log(res);
         });
     }
@@ -38,6 +77,9 @@ const Signup: React.FC = () => {
         </p>
         <div className="form__label">
           <h4>Username</h4>
+          {usernameError !== "" && (
+            <h4 className="form__errorMessage">{usernameError}</h4>
+          )}
         </div>
         <input
           value={username}
@@ -47,6 +89,9 @@ const Signup: React.FC = () => {
         />
         <div className="form__label">
           <h4>Email</h4>
+          {emailError !== "" && (
+            <h4 className="form__errorMessage">{emailError}</h4>
+          )}
         </div>
         <input
           value={email}
@@ -56,6 +101,9 @@ const Signup: React.FC = () => {
         />
         <div className="form__label">
           <h4>Password</h4>
+          {passwordError !== "" && (
+            <h4 className="form__errorMessage">{passwordError}</h4>
+          )}
         </div>
         <input
           type="password"

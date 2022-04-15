@@ -51,15 +51,27 @@ const playerRegister = async (req: Request, res: Response) => {
     // Check if user exists
     const findPlayer = await Player.findOne({
       where: {
-        [Op.or]: [{ username }, { email }],
+        username,
       },
     });
 
-    // if user exits
+    // if user exits with username
     if (findPlayer !== null) {
       return res
-        .status(400)
-        .json({ errorCode: 0, message: "Player already exists" });
+        .status(200)
+        .json({ errorCode: 0, message: "Username already exists" });
+    }
+
+    const findPlayer2 = await Player.findOne({
+      where: {
+        email,
+      },
+    });
+
+    if (findPlayer2 !== null) {
+      return res
+        .status(200)
+        .json({ errorCode: 0.1, message: "email already exists" });
     }
 
     // hash password
