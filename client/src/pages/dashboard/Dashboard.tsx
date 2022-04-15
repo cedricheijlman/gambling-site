@@ -7,7 +7,9 @@ export const Dashboard: React.FC = () => {
     <div className="dashboardContainer">
       <NavbarDashboard />
 
-      <h1>Lolz</h1>
+      {window.location.pathname == "/dashboard" && <div>Dashboard</div>}
+
+      {window.location.pathname == "/singlestake" && <h1>Single Stake</h1>}
     </div>
   );
 };

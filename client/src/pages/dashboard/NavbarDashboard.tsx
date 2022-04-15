@@ -1,13 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./NavbarDashboard.css";
 const NavbarDashboard: React.FC = () => {
   return (
     <nav className="dashboard__nav">
       <h2>Betting Ball</h2>
       <div className="dashboard__options">
-        <p>Dashboard</p>
+        <Link to={"/dashboard"}>
+          {" "}
+          <p>Dashboard</p>
+        </Link>
 
-        <p>Single Stake</p>
+        <Link to={"/singlestake"}>
+          <p>Single Stake</p>
+        </Link>
         <p>Multi Stake</p>
 
         <p>Roulette</p>
