@@ -16,27 +16,12 @@
   align-items: center;
 }
 
-.te {
-  background-color: rgba(83, 83, 83, 0.268);
-  width: 80%;
-  height: 90%;
-}
-
 .games__carousel {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
 
   justify-content: center;
-}
-
-.check {
-  display: flex;
-
-  flex-direction: column;
-  align-items: center;
-  width: 80%;
-  text-align: center;
 }
 
 .game__item {
