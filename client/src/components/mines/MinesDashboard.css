@@ -94,6 +94,7 @@
 }
 
 .minesContainer__minesTotal select {
+  margin-top: 3px;
   width: 100%;
   border-radius: 5px;
   outline: none;
