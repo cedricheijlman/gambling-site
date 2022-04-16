@@ -15,7 +15,43 @@ const MinesDashboard: React.FC = () => {
           </div>
           <button className="betButton">Bet</button>
         </div>
-        <div className="minesContainer__right">Right</div>
+        <div className="minesContainer__right">
+          <div className="row">
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+          </div>
+          <div className="row">
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+          </div>
+          <div className="row">
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+          </div>
+          <div className="row">
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+          </div>
+          <div className="row">
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+            <div className="col">Star</div>
+          </div>
+        </div>
       </div>
     </div>
   );
