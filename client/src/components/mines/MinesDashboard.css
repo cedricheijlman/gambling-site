@@ -88,6 +88,21 @@
   background-color: rgb(44, 44, 44);
 }
 
+.minesContainer__minesTotal {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.minesContainer__minesTotal select {
+  width: 100%;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  height: 45px;
+  background-color: rgb(55, 54, 54);
+  color: white;
+}
+
 .minesContainer__left .betButton {
   font-weight: 500;
   font-family: "Poppins";
@@ -125,7 +140,6 @@
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   width: 100px;
   height: 100px;
-
   display: flex;
   align-items: center;
   justify-content: center;
