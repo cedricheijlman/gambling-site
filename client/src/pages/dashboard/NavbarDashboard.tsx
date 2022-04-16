@@ -12,8 +12,6 @@ const NavbarDashboard: React.FC = () => {
         </Link>
         <p>Games</p>
         <p>Leaderboard</p>
-        <p>Store</p>
-        <p>FAQ</p>
       </div>
       <div className="nav__right">
         <div className="nav__rightMoneyContainer">

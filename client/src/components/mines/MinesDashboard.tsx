@@ -17,39 +17,118 @@ const MinesDashboard: React.FC = () => {
         </div>
         <div className="minesContainer__right">
           <div className="row">
-            <div className="col">Star</div>
-            <div className="col">Star</div>
-            <div className="col">Star</div>
-            <div className="col">Star</div>
-            <div className="col">Star</div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
           </div>
+
           <div className="row">
-            <div className="col">Star</div>
-            <div className="col">Star</div>
-            <div className="col">Star</div>
-            <div className="col">Star</div>
-            <div className="col">Star</div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
           </div>
+
           <div className="row">
-            <div className="col">Star</div>
-            <div className="col">Star</div>
-            <div className="col">Star</div>
-            <div className="col">Star</div>
-            <div className="col">Star</div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
           </div>
+
           <div className="row">
-            <div className="col">Star</div>
-            <div className="col">Star</div>
-            <div className="col">Star</div>
-            <div className="col">Star</div>
-            <div className="col">Star</div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
           </div>
+
           <div className="row">
-            <div className="col">Star</div>
-            <div className="col">Star</div>
-            <div className="col">Star</div>
-            <div className="col">Star</div>
-            <div className="col">Star</div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">Star</div>
+              <div className="theBack"></div>
+            </div>
           </div>
         </div>
       </div>

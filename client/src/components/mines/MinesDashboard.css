@@ -2,6 +2,7 @@
   width: 100%;
   height: 100%;
   display: flex;
+
   justify-content: center;
   align-items: center;
 }
@@ -12,7 +13,7 @@
   display: flex;
   justify-content: center;
   background-color: rgb(31, 30, 30);
-
+  flex-wrap: wrap;
   max-width: 1400px;
   height: 90%;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
@@ -87,9 +88,8 @@
 /* Mines Container Right */
 
 .minesContainer__right {
-  width: 60%;
   padding: 35px 50px;
-  width: 65%;
+  width: 60%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -99,14 +99,14 @@
   display: flex;
   height: 100%;
   width: 100%;
-
+  padding: 5px 0;
   display: flex;
   align-items: center;
 }
 
 .minesContainer__right .col {
-  width: 90px;
-  min-height: 90px;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -114,4 +114,31 @@
   margin-right: 5px;
   border-radius: 5px;
   border: 1px solid grey;
+  transform-style: preserve-3d;
+  transition: all 0.7s ease;
+}
+
+.minesContainer__right .col:hover {
+  transform: rotateY(-180deg);
+}
+
+.theFront {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.theBack {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  backface-visibility: hidden;
+  transform: rotateY(-180deg);
 }
