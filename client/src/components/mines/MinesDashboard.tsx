@@ -18,115 +18,165 @@ const MinesDashboard: React.FC = () => {
         <div className="minesContainer__right">
           <div className="row">
             <div className="col">
-              <div className="theFront">Star</div>
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
               <div className="theBack"></div>
             </div>
             <div className="col">
-              <div className="theFront">Star</div>
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
               <div className="theBack"></div>
             </div>
             <div className="col">
-              <div className="theFront">Star</div>
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
               <div className="theBack"></div>
             </div>
             <div className="col">
-              <div className="theFront">Star</div>
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
               <div className="theBack"></div>
             </div>
             <div className="col">
-              <div className="theFront">Star</div>
-              <div className="theBack"></div>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col">
-              <div className="theFront">Star</div>
-              <div className="theBack"></div>
-            </div>
-            <div className="col">
-              <div className="theFront">Star</div>
-              <div className="theBack"></div>
-            </div>
-            <div className="col">
-              <div className="theFront">Star</div>
-              <div className="theBack"></div>
-            </div>
-            <div className="col">
-              <div className="theFront">Star</div>
-              <div className="theBack"></div>
-            </div>
-            <div className="col">
-              <div className="theFront">Star</div>
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
               <div className="theBack"></div>
             </div>
           </div>
 
           <div className="row">
             <div className="col">
-              <div className="theFront">Star</div>
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
               <div className="theBack"></div>
             </div>
             <div className="col">
-              <div className="theFront">Star</div>
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
               <div className="theBack"></div>
             </div>
             <div className="col">
-              <div className="theFront">Star</div>
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
               <div className="theBack"></div>
             </div>
             <div className="col">
-              <div className="theFront">Star</div>
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
               <div className="theBack"></div>
             </div>
             <div className="col">
-              <div className="theFront">Star</div>
-              <div className="theBack"></div>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col">
-              <div className="theFront">Star</div>
-              <div className="theBack"></div>
-            </div>
-            <div className="col">
-              <div className="theFront">Star</div>
-              <div className="theBack"></div>
-            </div>
-            <div className="col">
-              <div className="theFront">Star</div>
-              <div className="theBack"></div>
-            </div>
-            <div className="col">
-              <div className="theFront">Star</div>
-              <div className="theBack"></div>
-            </div>
-            <div className="col">
-              <div className="theFront">Star</div>
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
               <div className="theBack"></div>
             </div>
           </div>
 
           <div className="row">
             <div className="col">
-              <div className="theFront">Star</div>
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
               <div className="theBack"></div>
             </div>
             <div className="col">
-              <div className="theFront">Star</div>
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
               <div className="theBack"></div>
             </div>
             <div className="col">
-              <div className="theFront">Star</div>
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
               <div className="theBack"></div>
             </div>
             <div className="col">
-              <div className="theFront">Star</div>
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
               <div className="theBack"></div>
             </div>
             <div className="col">
-              <div className="theFront">Star</div>
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
+              <div className="theBack"></div>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col">
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
+              <div className="theBack"></div>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col">
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
+              <div className="theBack"></div>
+            </div>
+            <div className="col">
+              <div className="theFront">
+                <img src="./basket.png" />
+              </div>
               <div className="theBack"></div>
             </div>
           </div>
