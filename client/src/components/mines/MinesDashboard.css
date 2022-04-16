@@ -1,0 +1,90 @@
+.minesWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.minesContainer {
+  border-radius: 10px;
+  display: flex;
+  background-color: rgb(31, 30, 30);
+  width: 90%;
+  max-width: 1400px;
+  height: 90%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+/* Mines Container Left */
+
+.minesContainer__left {
+  padding: 15px;
+  width: 35%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(26, 26, 26);
+}
+
+.minesContainer__betContainer {
+  width: 100%;
+  background-color: rgb(55, 54, 54);
+  height: 45px;
+  display: flex;
+  margin-top: 3px;
+  border-radius: 5px;
+  align-items: center;
+}
+.minesContainer__betContainer .moneyIcon {
+  margin: 0 10px;
+}
+
+.minesContainer__betContainer .maxButton {
+  height: 100%;
+  border: none;
+  background-color: rgb(91, 91, 91);
+  color: rgb(205, 199, 199);
+  font-family: "Poppins";
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0 15px;
+  border-radius: 0 5px 5px 0;
+}
+
+.minesContainer__betContainer input {
+  height: 100%;
+  font-weight: 600;
+
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  color: rgb(129, 128, 128);
+  padding-left: 10px;
+  outline: none;
+  background-color: rgb(44, 44, 44);
+}
+
+.minesContainer__left .betButton {
+  font-weight: 500;
+  font-family: "Poppins";
+  border: none;
+  outline: none;
+  background-color: #2ecc71;
+  padding: 12px 0;
+  font-size: 16px;
+  border-radius: 7px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+/* Mines Container Right */
+
+.minesContainer__right {
+  padding: 15px;
+  width: 65%;
+}
