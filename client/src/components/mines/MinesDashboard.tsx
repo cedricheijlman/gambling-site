@@ -35,18 +35,11 @@ const MinesDashboard: React.FC = () => {
 
   const handleBet = () => {
     if (userMoneyExample > 0) {
-      Axios.post("http://localhost:5000/api/mines").then(() => {
-        console.log("worked");
+      Axios.post("http://localhost:5000/api/minesRandomizer").then((result) => {
+        setPlayboard(result.data.randomizedPlayboard);
       });
 
       console.log(minesTotalRef.current?.value);
-      setPlayboard([
-        [1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1],
-        [0, 0, 0, 0, 0],
-        [1, 0, 0, 0, 0],
-      ]);
     }
   };
 
