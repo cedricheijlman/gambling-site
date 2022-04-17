@@ -3,10 +3,12 @@ const spawn = require("child_process").spawn;
 
 const minesRandomizer = async (req: Request, res: Response) => {
   try {
+    const { minesTotal } = req.body;
+
     // activate python script
     const childPython = spawn("python", [
       "./python_scripts/minesRandomizer.py",
-      "5",
+      minesTotal,
     ]);
 
     let arr: number[][] = [];
