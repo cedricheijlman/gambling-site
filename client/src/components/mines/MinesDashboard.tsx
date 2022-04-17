@@ -138,7 +138,15 @@ const MinesDashboard: React.FC = () => {
                   <div className="theFront">
                     <img alt="Basketball" src="./basket.png" />
                   </div>
-                  <div className="theBack">{imageHandling(0, index)}</div>
+                  <div
+                    className={
+                      playBoard[0][index] == 1
+                        ? "theBack loseMine"
+                        : "theBack winMine"
+                    }
+                  >
+                    {imageHandling(0, index)}
+                  </div>
                 </div>
               );
             })}
@@ -159,7 +167,15 @@ const MinesDashboard: React.FC = () => {
                   <div className="theFront">
                     <img alt="Basketball" src="./basket.png" />
                   </div>
-                  <div className="theBack">{imageHandling(1, index)}</div>
+                  <div
+                    className={
+                      playBoard[1][index] == 1
+                        ? "theBack loseMine"
+                        : "theBack winMine"
+                    }
+                  >
+                    {imageHandling(1, index)}
+                  </div>
                 </div>
               );
             })}
@@ -180,7 +196,15 @@ const MinesDashboard: React.FC = () => {
                   <div className="theFront">
                     <img alt="Basketball" src="./basket.png" />
                   </div>
-                  <div className="theBack">{imageHandling(2, index)}</div>
+                  <div
+                    className={
+                      playBoard[2][index] == 1
+                        ? "theBack loseMine"
+                        : "theBack winMine"
+                    }
+                  >
+                    {imageHandling(2, index)}
+                  </div>
                 </div>
               );
             })}
@@ -201,7 +225,15 @@ const MinesDashboard: React.FC = () => {
                   <div className="theFront">
                     <img alt="Basketball" src="./basket.png" />
                   </div>
-                  <div className="theBack">{imageHandling(3, index)}</div>
+                  <div
+                    className={
+                      playBoard[3][index] == 1
+                        ? "theBack loseMine"
+                        : "theBack winMine"
+                    }
+                  >
+                    {imageHandling(3, index)}
+                  </div>
                 </div>
               );
             })}
@@ -222,7 +254,15 @@ const MinesDashboard: React.FC = () => {
                   <div className="theFront">
                     <img alt="Basketball" src="./basket.png" />
                   </div>
-                  <div className="theBack">{imageHandling(4, index)}</div>
+                  <div
+                    className={
+                      playBoard[4][index] == 1
+                        ? "theBack loseMine"
+                        : "theBack winMine"
+                    }
+                  >
+                    {imageHandling(4, index)}
+                  </div>
                 </div>
               );
             })}

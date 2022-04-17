@@ -195,3 +195,13 @@
   backface-visibility: hidden;
   transform: rotateY(-180deg);
 }
+
+.loseMine {
+  background-color: #c0392b !important;
+  border: none !important;
+}
+
+.winMine {
+  background-color: #4562ab2c;
+  border: none !important;
+}
