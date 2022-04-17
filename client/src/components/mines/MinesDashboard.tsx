@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import "./MinesDashboard.css";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
+import Axios from "axios";
 
 const MinesDashboard: React.FC = () => {
   const userMoneyExample: number = 500003;
@@ -34,6 +35,10 @@ const MinesDashboard: React.FC = () => {
 
   const handleBet = () => {
     if (userMoneyExample > 0) {
+      Axios.post("http://localhost:5000/api/mines").then(() => {
+        console.log("worked");
+      });
+
       console.log(minesTotalRef.current?.value);
       setPlayboard([
         [1, 1, 1, 1, 1],
