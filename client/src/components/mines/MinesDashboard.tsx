@@ -5,20 +5,15 @@ import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 const MinesDashboard: React.FC = () => {
   const userMoneyExample: number = 500003;
   const [betAmountValue, setBetAmountValue] = useState("");
+  const [playBoard, setPlayboard] = useState([
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+  ]);
 
   const minesTotalRef = useRef<HTMLSelectElement>(null);
-
-  const playBoard: number[][] = [
-    [1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-  ];
-
-  playBoard.forEach(() => {
-    console.log("1");
-  });
 
   const changeBetAmountValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (Number(e.target.value) <= userMoneyExample) {
@@ -40,6 +35,13 @@ const MinesDashboard: React.FC = () => {
   const handleBet = () => {
     if (userMoneyExample > 0) {
       console.log(minesTotalRef.current?.value);
+      setPlayboard([
+        [1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0],
+        [1, 0, 0, 0, 0],
+      ]);
     }
   };
 
