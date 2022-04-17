@@ -158,7 +158,7 @@
   object-fit: cover;
 }
 
-.minesContainer__right .col:hover {
+.mineClicked {
   transform: rotateY(-180deg);
 }
 

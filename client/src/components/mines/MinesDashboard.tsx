@@ -14,6 +14,14 @@ const MinesDashboard: React.FC = () => {
     [0, 0, 0, 0, 0],
   ]);
 
+  const [checkedMines, setCheckedMines] = useState([
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+  ]);
+
   const minesTotalRef = useRef<HTMLSelectElement>(null);
 
   const changeBetAmountValue = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,6 +51,12 @@ const MinesDashboard: React.FC = () => {
 
       console.log(minesTotalRef.current?.value);
     }
+  };
+
+  const handleMineClick = (row: number, column: number) => {
+    let copy = [...checkedMines];
+    copy[row][column] = 1;
+    setCheckedMines(copy);
   };
 
   return (
@@ -82,7 +96,15 @@ const MinesDashboard: React.FC = () => {
           <div className="row">
             {playBoard.map((e, index) => {
               return (
-                <div key={index} className="col">
+                <div
+                  onClick={() => {
+                    handleMineClick(0, index);
+                  }}
+                  className={
+                    checkedMines[0][index] == 0 ? "col" : "col mineClicked"
+                  }
+                  key={index}
+                >
                   <div className="theFront">
                     <img alt="Basketball" src="./basket.png" />
                   </div>
@@ -95,7 +117,15 @@ const MinesDashboard: React.FC = () => {
           <div className="row">
             {playBoard.map((e, index) => {
               return (
-                <div key={index} className="col">
+                <div
+                  key={index}
+                  onClick={() => {
+                    handleMineClick(1, index);
+                  }}
+                  className={
+                    checkedMines[1][index] == 0 ? "col" : "col mineClicked"
+                  }
+                >
                   <div className="theFront">
                     <img alt="Basketball" src="./basket.png" />
                   </div>
@@ -108,7 +138,15 @@ const MinesDashboard: React.FC = () => {
           <div className="row">
             {playBoard.map((e, index) => {
               return (
-                <div key={index} className="col">
+                <div
+                  key={index}
+                  onClick={() => {
+                    handleMineClick(2, index);
+                  }}
+                  className={
+                    checkedMines[2][index] == 0 ? "col" : "col mineClicked"
+                  }
+                >
                   <div className="theFront">
                     <img alt="Basketball" src="./basket.png" />
                   </div>
@@ -121,7 +159,15 @@ const MinesDashboard: React.FC = () => {
           <div className="row">
             {playBoard.map((e, index) => {
               return (
-                <div key={index} className="col">
+                <div
+                  key={index}
+                  onClick={() => {
+                    handleMineClick(3, index);
+                  }}
+                  className={
+                    checkedMines[3][index] == 0 ? "col" : "col mineClicked"
+                  }
+                >
                   <div className="theFront">
                     <img alt="Basketball" src="./basket.png" />
                   </div>
@@ -134,7 +180,15 @@ const MinesDashboard: React.FC = () => {
           <div className="row">
             {playBoard.map((e, index) => {
               return (
-                <div key={index} className="col">
+                <div
+                  key={index}
+                  onClick={() => {
+                    handleMineClick(4, index);
+                  }}
+                  className={
+                    checkedMines[4][index] == 0 ? "col" : "col mineClicked"
+                  }
+                >
                   <div className="theFront">
                     <img alt="Basketball" src="./basket.png" />
                   </div>
