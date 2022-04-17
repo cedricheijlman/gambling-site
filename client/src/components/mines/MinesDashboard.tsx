@@ -24,7 +24,9 @@ const MinesDashboard: React.FC = () => {
     [0, 0, 0, 0, 0],
   ]);
 
-  const minesTotalRef = useRef<HTMLSelectElement>(null);
+  const minesTotalRef = useRef<HTMLSelectElement>(
+    document.createElement("select")
+  );
 
   const changeBetAmountValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (Number(e.target.value) <= userMoneyExample) {
@@ -43,6 +45,8 @@ const MinesDashboard: React.FC = () => {
     }
   };
 
+  const [cashoutMoney, setCashoutMoney] = useState(0);
+
   const betButtonHandling = () => {
     if (gameStart == false) {
       return (
@@ -53,7 +57,7 @@ const MinesDashboard: React.FC = () => {
     } else {
       return (
         <button onClick={handleCashout} className="cashoutButton">
-          Cashout
+          Cashout ${cashoutMoney !== 0 ? cashoutMoney : "0.00"}
         </button>
       );
     }
@@ -81,6 +85,7 @@ const MinesDashboard: React.FC = () => {
       [0, 0, 0, 0, 0],
     ]);
     setGameStart(false);
+    setCashoutMoney(0);
   };
 
   const handleMineClick = (row: number, column: number) => {
@@ -88,6 +93,8 @@ const MinesDashboard: React.FC = () => {
       let copy = [...checkedMines];
       copy[row][column] = 1;
       setCheckedMines(copy);
+      if (playBoard[row][column] == 0) {
+      }
     }
   };
 
