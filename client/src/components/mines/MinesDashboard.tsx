@@ -16,6 +16,10 @@ const MinesDashboard: React.FC = () => {
     [0, 0, 0, 0, 0],
   ];
 
+  playBoard.forEach(() => {
+    console.log("1");
+  });
+
   const changeBetAmountValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (Number(e.target.value) <= userMoneyExample) {
       console.log("he;;p");
@@ -74,168 +78,68 @@ const MinesDashboard: React.FC = () => {
         </div>
         <div className="minesContainer__right">
           <div className="row">
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(0, 0)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(0, 1)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(0, 2)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(0, 3)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(0, 4)}</div>
-            </div>
+            {playBoard.map((e, index) => {
+              return (
+                <div key={index} className="col">
+                  <div className="theFront">
+                    <img alt="Basketball" src="./basket.png" />
+                  </div>
+                  <div className="theBack">{imageHandling(0, index)}</div>
+                </div>
+              );
+            })}
           </div>
 
           <div className="row">
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(1, 0)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(1, 1)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(1, 2)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(1, 3)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(1, 4)}</div>
-            </div>
+            {playBoard.map((e, index) => {
+              return (
+                <div key={index} className="col">
+                  <div className="theFront">
+                    <img alt="Basketball" src="./basket.png" />
+                  </div>
+                  <div className="theBack">{imageHandling(1, index)}</div>
+                </div>
+              );
+            })}
           </div>
 
           <div className="row">
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(2, 0)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(2, 1)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(2, 2)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(2, 3)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(2, 4)}</div>
-            </div>
+            {playBoard.map((e, index) => {
+              return (
+                <div key={index} className="col">
+                  <div className="theFront">
+                    <img alt="Basketball" src="./basket.png" />
+                  </div>
+                  <div className="theBack">{imageHandling(2, index)}</div>
+                </div>
+              );
+            })}
           </div>
 
           <div className="row">
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(3, 0)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(3, 1)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(3, 2)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(3, 3)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(3, 4)}</div>
-            </div>
+            {playBoard.map((e, index) => {
+              return (
+                <div key={index} className="col">
+                  <div className="theFront">
+                    <img alt="Basketball" src="./basket.png" />
+                  </div>
+                  <div className="theBack">{imageHandling(3, index)}</div>
+                </div>
+              );
+            })}
           </div>
 
           <div className="row">
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(4, 0)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(4, 1)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(4, 2)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(4, 3)}</div>
-            </div>
-            <div className="col">
-              <div className="theFront">
-                <img alt="Basketball" src="./basket.png" />
-              </div>
-              <div className="theBack">{imageHandling(4, 4)}</div>
-            </div>
+            {playBoard.map((e, index) => {
+              return (
+                <div key={index} className="col">
+                  <div className="theFront">
+                    <img alt="Basketball" src="./basket.png" />
+                  </div>
+                  <div className="theBack">{imageHandling(4, index)}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
