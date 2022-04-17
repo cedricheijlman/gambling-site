@@ -14,6 +14,8 @@ const MinesDashboard: React.FC = () => {
     [0, 0, 0, 0, 0],
   ]);
 
+  const [gameStart, setGameStart] = useState(false);
+
   const [checkedMines, setCheckedMines] = useState([
     [0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0],
@@ -41,11 +43,28 @@ const MinesDashboard: React.FC = () => {
     }
   };
 
+  const betButtonHandling = () => {
+    if (gameStart == false) {
+      return (
+        <button className="betButton" onClick={handleBet}>
+          Bet
+        </button>
+      );
+    } else {
+      return (
+        <button onClick={handleCashout} className="cashoutButton">
+          Cashout
+        </button>
+      );
+    }
+  };
+
   const handleBet = () => {
     if (userMoneyExample > 0) {
       Axios.post("http://localhost:5000/api/minesRandomizer", {
         minesTotal: minesTotalRef.current?.value,
       }).then((result) => {
+        setGameStart(true);
         setPlayboard(result.data.randomizedPlayboard);
       });
 
@@ -53,10 +72,23 @@ const MinesDashboard: React.FC = () => {
     }
   };
 
+  const handleCashout = () => {
+    setCheckedMines([
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+    ]);
+    setGameStart(false);
+  };
+
   const handleMineClick = (row: number, column: number) => {
-    let copy = [...checkedMines];
-    copy[row][column] = 1;
-    setCheckedMines(copy);
+    if (gameStart) {
+      let copy = [...checkedMines];
+      copy[row][column] = 1;
+      setCheckedMines(copy);
+    }
   };
 
   return (
@@ -88,9 +120,7 @@ const MinesDashboard: React.FC = () => {
               <option value="10">10</option>
             </select>
           </div>
-          <button className="betButton" onClick={handleBet}>
-            Bet
-          </button>
+          {betButtonHandling()}
         </div>
         <div className="minesContainer__right">
           <div className="row">

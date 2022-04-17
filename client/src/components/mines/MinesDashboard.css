@@ -117,6 +117,19 @@
   margin-top: 15px;
 }
 
+.minesContainer__left .cashoutButton {
+  font-weight: 500;
+  font-family: "Poppins";
+  border: none;
+  outline: none;
+  background-color: #2160b1;
+  padding: 12px 0;
+  font-size: 16px;
+  border-radius: 7px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
 /* Mines Container Right */
 
 .minesContainer__right {
@@ -158,11 +171,11 @@
   object-fit: cover;
 }
 
-.mineClicked {
+.minesContainer__right .mineClicked {
   transform: rotateY(-180deg);
 }
 
-.theFront {
+.minesContainer__right .theFront {
   position: absolute;
   width: 100%;
   display: flex;
@@ -172,7 +185,7 @@
   backface-visibility: hidden;
 }
 
-.theBack {
+.minesContainer__right .theBack {
   position: absolute;
   width: 100%;
   display: flex;
