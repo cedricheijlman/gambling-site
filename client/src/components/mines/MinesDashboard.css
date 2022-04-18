@@ -150,8 +150,7 @@
 
 .minesContainer__right .col {
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   width: 100px;
   height: 100px;
   display: flex;
@@ -162,7 +161,7 @@
   border-radius: 5px;
   border: 1px solid grey;
   transform-style: preserve-3d;
-  transition: all 0.7s ease;
+  transition: all 0.1s ease;
 }
 
 .minesContainer__right .col img {

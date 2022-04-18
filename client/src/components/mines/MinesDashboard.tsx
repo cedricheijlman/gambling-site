@@ -68,8 +68,18 @@ const MinesDashboard: React.FC = () => {
       Axios.post("http://localhost:5000/api/minesRandomizer", {
         minesTotal: minesTotalRef.current?.value,
       }).then((result) => {
-        setGameStart(true);
-        setPlayboard(result.data.randomizedPlayboard);
+        setCheckedMines([
+          [0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0],
+        ]);
+        setTimeout(() => {
+          setGameStart(true);
+
+          setPlayboard(result.data.randomizedPlayboard);
+        }, 800);
       });
 
       console.log(minesTotalRef.current?.value);
@@ -79,11 +89,11 @@ const MinesDashboard: React.FC = () => {
   // when player clicks on cashout button
   const handleCashout = () => {
     setCheckedMines([
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
     ]);
     setGameStart(false);
     setCashoutMoney(0);
@@ -92,6 +102,16 @@ const MinesDashboard: React.FC = () => {
   // if player clicks on bomb
   const handleLoseGame = () => {
     console.log("lost game");
+    setCheckedMines([
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+    ]);
+    setGameStart(false);
+
+    setCashoutMoney(0);
   };
 
   // when player clicks on a mine tile
