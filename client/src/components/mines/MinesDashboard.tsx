@@ -76,6 +76,7 @@ const MinesDashboard: React.FC = () => {
     }
   };
 
+  // when player clicks on cashout button
   const handleCashout = () => {
     setCheckedMines([
       [0, 0, 0, 0, 0],
@@ -88,12 +89,19 @@ const MinesDashboard: React.FC = () => {
     setCashoutMoney(0);
   };
 
+  // if player clicks on bomb
+  const handleLoseGame = () => {
+    console.log("lost game");
+  };
+
+  // when player clicks on a mine tile
   const handleMineClick = (row: number, column: number) => {
     if (gameStart) {
       let copy = [...checkedMines];
       copy[row][column] = 1;
       setCheckedMines(copy);
-      if (playBoard[row][column] == 0) {
+      if (playBoard[row][column] == 1) {
+        handleLoseGame();
       }
     }
   };
