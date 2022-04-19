@@ -187,6 +187,7 @@
 .minesContainer__right .theBack {
   position: absolute;
   width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -197,10 +198,15 @@
 
 .loseMine {
   background-color: #c0392b !important;
+  background-image: url("./bomb.png");
+  background-size: cover;
+
   border: none !important;
 }
 
 .winMine {
   background-color: #4562ab7d;
   border: none !important;
+  background-image: url("./diamond.png");
+  background-size: cover;
 }

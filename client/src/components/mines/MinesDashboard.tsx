@@ -54,7 +54,7 @@ const MinesDashboard: React.FC = () => {
   );
 
   // Bet Amount
-  const [betAmountValue, setBetAmountValue] = useState("");
+  const [betAmountValue, setBetAmountValue] = useState(10);
 
   // Change bet amount value
   const changeBetAmountValue = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,16 +62,7 @@ const MinesDashboard: React.FC = () => {
       console.log("he;;p");
       console.log(e);
 
-      setBetAmountValue(e.target.value);
-    }
-  };
-
-  // handle images from mines
-  const imageHandling = (row: number, col: number) => {
-    if (playBoard[row][col] == 1) {
-      return <img src="./bomb.png" />;
-    } else {
-      return <img src="./diamond.png" />;
+      setBetAmountValue(Number(e.target.value));
     }
   };
 
@@ -130,8 +121,13 @@ const MinesDashboard: React.FC = () => {
 
   // If player clicks on diamond
   const handleWin = () => {
-    let totalBombs = Number(minesTotalRef?.current?.value);
-    setCashoutMoney((prev) => prev + totalBombs * 1.25);
+    let totalBombs = minesTotalRef?.current?.value;
+    let newCashoutMoney =
+      Math.round(
+        cashoutMoney * (1 + Number(totalBombs) / 100) + cashoutMoney * 100
+      ) / 100;
+    console.log(newCashoutMoney);
+    setCashoutMoney(newCashoutMoney);
   };
 
   // When player clicks on a mine tile
@@ -201,9 +197,7 @@ const MinesDashboard: React.FC = () => {
                         ? "theBack loseMine"
                         : "theBack winMine"
                     }
-                  >
-                    {imageHandling(0, index)}
-                  </div>
+                  ></div>
                 </div>
               );
             })}
@@ -230,9 +224,7 @@ const MinesDashboard: React.FC = () => {
                         ? "theBack loseMine"
                         : "theBack winMine"
                     }
-                  >
-                    {imageHandling(1, index)}
-                  </div>
+                  ></div>
                 </div>
               );
             })}
@@ -259,9 +251,7 @@ const MinesDashboard: React.FC = () => {
                         ? "theBack loseMine"
                         : "theBack winMine"
                     }
-                  >
-                    {imageHandling(2, index)}
-                  </div>
+                  ></div>
                 </div>
               );
             })}
@@ -272,9 +262,7 @@ const MinesDashboard: React.FC = () => {
               return (
                 <div
                   key={index}
-                  onClick={() => {
-                    handleMineClick(3, index);
-                  }}
+                  onClick={() => {}}
                   className={
                     checkedMines[3][index] == 0 ? "col" : "col mineClicked"
                   }
@@ -288,9 +276,7 @@ const MinesDashboard: React.FC = () => {
                         ? "theBack loseMine"
                         : "theBack winMine"
                     }
-                  >
-                    {imageHandling(3, index)}
-                  </div>
+                  ></div>
                 </div>
               );
             })}
@@ -317,9 +303,7 @@ const MinesDashboard: React.FC = () => {
                         ? "theBack loseMine"
                         : "theBack winMine"
                     }
-                  >
-                    {imageHandling(4, index)}
-                  </div>
+                  ></div>
                 </div>
               );
             })}
