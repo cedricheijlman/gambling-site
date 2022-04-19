@@ -5,17 +5,20 @@ import Axios from "axios";
 
 const MinesDashboard: React.FC = () => {
   const userMoneyExample: number = 500003;
-  const [betAmountValue, setBetAmountValue] = useState("");
+
+  // Keep track of cashout money
+  const [cashoutMoney, setCashoutMoney] = useState(0);
+
+  // Default Playboard
   const [playBoard, setPlayboard] = useState([
-    [1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0],
   ]);
 
-  const [gameStart, setGameStart] = useState(false);
-
+  // Check Selected Mines
   const [checkedMines, setCheckedMines] = useState([
     [0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0],
@@ -24,10 +27,18 @@ const MinesDashboard: React.FC = () => {
     [0, 0, 0, 0, 0],
   ]);
 
+  // check if game started
+  const [gameStart, setGameStart] = useState(false);
+
+  // Keep track of how many bombs in input
   const minesTotalRef = useRef<HTMLSelectElement>(
     document.createElement("select")
   );
 
+  // Bet Amount
+  const [betAmountValue, setBetAmountValue] = useState("");
+
+  // Change bet amount value
   const changeBetAmountValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (Number(e.target.value) <= userMoneyExample) {
       console.log("he;;p");
@@ -37,21 +48,21 @@ const MinesDashboard: React.FC = () => {
     }
   };
 
+  // handle images from mines
   const imageHandling = (row: number, col: number) => {
     if (playBoard[row][col] == 1) {
-      return <h1>Lose</h1>;
+      return <img src="./bomb.png" />;
     } else {
-      return <h1>Win</h1>;
+      return <img src="./diamond.png" />;
     }
   };
 
-  const [cashoutMoney, setCashoutMoney] = useState(0);
-
+  // Handle Bet Button
   const betButtonHandling = () => {
     if (gameStart == false) {
       return (
         <button className="betButton" onClick={handleBet}>
-          Bet
+          {!gameStart && loading ? "Loading..." : "Bet"}
         </button>
       );
     } else {
@@ -63,6 +74,10 @@ const MinesDashboard: React.FC = () => {
     }
   };
 
+  // Handle Loading when clicked on bet
+  const [loading, setLoading] = useState(false);
+
+  // Handle Bet
   const handleBet = () => {
     if (userMoneyExample > 0) {
       Axios.post("http://localhost:5000/api/minesRandomizer", {
@@ -75,14 +90,13 @@ const MinesDashboard: React.FC = () => {
           [0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0],
         ]);
+        setLoading(true);
         setTimeout(() => {
           setGameStart(true);
-
+          setLoading(false);
           setPlayboard(result.data.randomizedPlayboard);
-        }, 800);
+        }, 600);
       });
-
-      console.log(minesTotalRef.current?.value);
     }
   };
 
