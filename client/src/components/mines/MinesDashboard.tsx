@@ -105,6 +105,8 @@ const MinesDashboard: React.FC = () => {
 
   // when player clicks on cashout button
   const handleCashout = () => {
+    let win: HTMLAudioElement = new Audio("./win.wav");
+    win.play();
     setCheckedMines(fullyCheckedPlayboard);
     setGameStart(false);
     setCashoutMoney(0);
@@ -121,11 +123,10 @@ const MinesDashboard: React.FC = () => {
 
   // If player clicks on diamond
   const handleWin = () => {
-    let totalBombs = minesTotalRef?.current?.value;
+    let totalBombs: number = Number(minesTotalRef?.current?.value);
     let newCashoutMoney =
-      Math.round(
-        cashoutMoney * (1 + Number(totalBombs) / 100) + cashoutMoney * 100
-      ) / 100;
+      Math.round(cashoutMoney * (1 + totalBombs / 100) + cashoutMoney * 100) /
+      100;
     console.log(newCashoutMoney);
     setCashoutMoney(newCashoutMoney);
   };
@@ -133,12 +134,16 @@ const MinesDashboard: React.FC = () => {
   // When player clicks on a mine tile
   const handleMineClick = (row: number, column: number) => {
     if (gameStart && checkedMines[row][column] == 0) {
+      let click: HTMLAudioElement = new Audio("./click.wav");
+
       let copy = [...checkedMines];
       copy[row][column] = 1;
       setCheckedMines(copy);
       if (playBoard[row][column] == 1) {
         return handleLoseGame();
       } else if (playBoard[row][column] == 0) {
+        click.volume = 0.5;
+        click.play();
         return handleWin();
       }
     }
@@ -191,13 +196,15 @@ const MinesDashboard: React.FC = () => {
                   <div className="theFront">
                     <img alt="Basketball" src="./basket.png" />
                   </div>
-                  <div
-                    className={
-                      playBoard[0][index] == 1
-                        ? "theBack loseMine"
-                        : "theBack winMine"
-                    }
-                  ></div>
+                  {checkedMines[0][index] && (
+                    <div
+                      className={
+                        playBoard[0][index] == 1
+                          ? "theBack loseMine"
+                          : "theBack winMine"
+                      }
+                    ></div>
+                  )}
                 </div>
               );
             })}
@@ -218,13 +225,15 @@ const MinesDashboard: React.FC = () => {
                   <div className="theFront">
                     <img alt="Basketball" src="./basket.png" />
                   </div>
-                  <div
-                    className={
-                      playBoard[1][index] == 1
-                        ? "theBack loseMine"
-                        : "theBack winMine"
-                    }
-                  ></div>
+                  {checkedMines[1][index] && (
+                    <div
+                      className={
+                        playBoard[1][index] == 1
+                          ? "theBack loseMine"
+                          : "theBack winMine"
+                      }
+                    ></div>
+                  )}
                 </div>
               );
             })}
@@ -245,13 +254,15 @@ const MinesDashboard: React.FC = () => {
                   <div className="theFront">
                     <img alt="Basketball" src="./basket.png" />
                   </div>
-                  <div
-                    className={
-                      playBoard[2][index] == 1
-                        ? "theBack loseMine"
-                        : "theBack winMine"
-                    }
-                  ></div>
+                  {checkedMines[2][index] && (
+                    <div
+                      className={
+                        playBoard[2][index] == 1
+                          ? "theBack loseMine"
+                          : "theBack winMine"
+                      }
+                    ></div>
+                  )}
                 </div>
               );
             })}
@@ -262,7 +273,9 @@ const MinesDashboard: React.FC = () => {
               return (
                 <div
                   key={index}
-                  onClick={() => {}}
+                  onClick={() => {
+                    handleMineClick(3, index);
+                  }}
                   className={
                     checkedMines[3][index] == 0 ? "col" : "col mineClicked"
                   }
@@ -270,13 +283,15 @@ const MinesDashboard: React.FC = () => {
                   <div className="theFront">
                     <img alt="Basketball" src="./basket.png" />
                   </div>
-                  <div
-                    className={
-                      playBoard[3][index] == 1
-                        ? "theBack loseMine"
-                        : "theBack winMine"
-                    }
-                  ></div>
+                  {checkedMines[3][index] && (
+                    <div
+                      className={
+                        playBoard[3][index] == 1
+                          ? "theBack loseMine"
+                          : "theBack winMine"
+                      }
+                    ></div>
+                  )}
                 </div>
               );
             })}
@@ -297,13 +312,15 @@ const MinesDashboard: React.FC = () => {
                   <div className="theFront">
                     <img alt="Basketball" src="./basket.png" />
                   </div>
-                  <div
-                    className={
-                      playBoard[4][index] == 1
-                        ? "theBack loseMine"
-                        : "theBack winMine"
-                    }
-                  ></div>
+                  {checkedMines[4][index] && (
+                    <div
+                      className={
+                        playBoard[4][index] == 1
+                          ? "theBack loseMine"
+                          : "theBack winMine"
+                      }
+                    ></div>
+                  )}
                 </div>
               );
             })}

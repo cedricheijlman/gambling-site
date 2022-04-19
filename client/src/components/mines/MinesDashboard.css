@@ -164,6 +164,10 @@
   transition: all 0.1s ease;
 }
 
+.minesContainer__right .col:hover {
+  background-color: rgb(41, 41, 41);
+}
+
 .minesContainer__right .col img {
   width: 70%;
   height: 70%;
@@ -199,7 +203,9 @@
 .loseMine {
   background-color: #c0392b !important;
   background-image: url("./bomb.png");
-  background-size: cover;
+  background-size: 80px 80px;
+  background-position: center;
+  background-repeat: no-repeat;
 
   border: none !important;
 }
