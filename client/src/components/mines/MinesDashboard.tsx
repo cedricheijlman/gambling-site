@@ -106,7 +106,9 @@ const MinesDashboard: React.FC = () => {
   // when player clicks on cashout button
   const handleCashout = () => {
     let win: HTMLAudioElement = new Audio("./win.wav");
+    win.volume = 0.4;
     win.play();
+
     setCheckedMines(fullyCheckedPlayboard);
     setGameStart(false);
     setCashoutMoney(0);
