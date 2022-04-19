@@ -9,7 +9,7 @@ const MinesDashboard: React.FC = () => {
   // Keep track of cashout money
   const [cashoutMoney, setCashoutMoney] = useState(0);
 
-  // Default Playboard
+  // Dynamic Playboard
   const [playBoard, setPlayboard] = useState([
     [0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0],
@@ -17,6 +17,24 @@ const MinesDashboard: React.FC = () => {
     [0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0],
   ]);
+
+  // Reset Playboard
+  let resetPlayboard: number[][] = [
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+  ];
+
+  // Playboard fully checked
+  let fullyCheckedPlayboard: number[][] = [
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+  ];
 
   // Check Selected Mines
   const [checkedMines, setCheckedMines] = useState([
@@ -83,13 +101,7 @@ const MinesDashboard: React.FC = () => {
       Axios.post("http://localhost:5000/api/minesRandomizer", {
         minesTotal: minesTotalRef.current?.value,
       }).then((result) => {
-        setCheckedMines([
-          [0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0],
-        ]);
+        setCheckedMines(resetPlayboard);
         setLoading(true);
         setTimeout(() => {
           setGameStart(true);
@@ -102,40 +114,36 @@ const MinesDashboard: React.FC = () => {
 
   // when player clicks on cashout button
   const handleCashout = () => {
-    setCheckedMines([
-      [1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1],
-    ]);
+    setCheckedMines(fullyCheckedPlayboard);
     setGameStart(false);
     setCashoutMoney(0);
   };
 
-  // if player clicks on bomb
+  // If player clicks on bomb
   const handleLoseGame = () => {
     console.log("lost game");
-    setCheckedMines([
-      [1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1],
-    ]);
+    setCheckedMines(fullyCheckedPlayboard);
     setGameStart(false);
 
     setCashoutMoney(0);
   };
 
-  // when player clicks on a mine tile
+  // If player clicks on diamond
+  const handleWin = () => {
+    let totalBombs = Number(minesTotalRef?.current?.value);
+    setCashoutMoney((prev) => prev + totalBombs * 1.25);
+  };
+
+  // When player clicks on a mine tile
   const handleMineClick = (row: number, column: number) => {
-    if (gameStart) {
+    if (gameStart && checkedMines[row][column] == 0) {
       let copy = [...checkedMines];
       copy[row][column] = 1;
       setCheckedMines(copy);
       if (playBoard[row][column] == 1) {
-        handleLoseGame();
+        return handleLoseGame();
+      } else if (playBoard[row][column] == 0) {
+        return handleWin();
       }
     }
   };
