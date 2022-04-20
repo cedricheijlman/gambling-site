@@ -6,9 +6,6 @@ import Axios from "axios";
 const MinesDashboard: React.FC = () => {
   const userMoneyExample: number = 500003;
 
-  // Keep track of cashout money
-  const [cashoutMoney, setCashoutMoney] = useState(0);
-
   // Dynamic Playboard
   const [playBoard, setPlayboard] = useState([
     [0, 0, 0, 0, 0],
@@ -54,7 +51,10 @@ const MinesDashboard: React.FC = () => {
   );
 
   // Bet Amount
-  const [betAmountValue, setBetAmountValue] = useState(10);
+  const [betAmountValue, setBetAmountValue] = useState(500);
+
+  // Keep track of cashout money
+  const [cashoutMoney, setCashoutMoney] = useState(Number(betAmountValue));
 
   // Change bet amount value
   const changeBetAmountValue = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -94,6 +94,7 @@ const MinesDashboard: React.FC = () => {
       })
         .then((result) => {
           setCheckedMines(resetPlayboard);
+          setCashoutMoney(Number(betAmountValue));
           setLoading(true);
           setTimeout(() => {
             setGameStart(true);
@@ -132,9 +133,8 @@ const MinesDashboard: React.FC = () => {
   const handleWin = () => {
     let totalBombs: number = Number(minesTotalRef?.current?.value);
     let newCashoutMoney =
-      Math.round(cashoutMoney * (1 + totalBombs / 100) + cashoutMoney * 100) /
-      100;
-    console.log(newCashoutMoney);
+      Math.floor(cashoutMoney * (1.05 + totalBombs / 50) * 100) / 100;
+    console.log(cashoutMoney, "d");
     setCashoutMoney(newCashoutMoney);
   };
 
