@@ -1,5 +1,6 @@
 import React from "react";
 import MinesDashboard from "../../components/mines/MinesDashboard";
+import CrashDashboard from "../crash/CrashDashboard";
 import "./Dashboard.css";
 import NavbarDashboard from "./NavbarDashboard";
 
@@ -29,6 +30,12 @@ export const Dashboard: React.FC = () => {
       {window.location.pathname == "/mines" && (
         <div className="dashboardContainer">
           <MinesDashboard />
+        </div>
+      )}
+
+      {window.location.pathname == "/crash" && (
+        <div className="dashboardContainer">
+          <CrashDashboard />
         </div>
       )}
     </div>

@@ -5,9 +5,10 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 
-ReactDOM.render(
+const rootElement: any = document.getElementById("root");
+
+createRoot(rootElement).render(
   <BrowserRouter>
     <App />
-  </BrowserRouter>,
-  document.getElementById("root")
+  </BrowserRouter>
 );

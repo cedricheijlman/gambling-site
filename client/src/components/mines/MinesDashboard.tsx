@@ -133,7 +133,7 @@ const MinesDashboard: React.FC = () => {
   const handleWin = () => {
     let totalBombs: number = Number(minesTotalRef?.current?.value);
     let newCashoutMoney =
-      Math.floor(cashoutMoney * (1.05 + totalBombs / 50) * 100) / 100;
+      Math.floor(cashoutMoney * (1 + totalBombs / 55) * 100) / 100;
     console.log(cashoutMoney, "d");
     setCashoutMoney(newCashoutMoney);
   };
