@@ -6,17 +6,23 @@ const minesRandomizer = async (req: Request, res: Response) => {
     const { minesTotal } = req.body;
 
     // activate python script
-    const childPython = spawn("python", [
-      "./python_scripts/minesRandomizer.py",
-      minesTotal,
-    ]);
+    const childPython = spawn(
+      "python3",
+      ["./python_scripts/minesRandomizer.py", minesTotal],
+      { shell: true }
+    );
 
     let arr: number[][] = [];
 
     // when python script done recieve answer
     childPython.stdout.on("data", (data: any) => {
       arr = JSON.parse(data);
+
       return res.json({ randomizedPlayboard: arr });
+    });
+
+    childPython.stderr.on("data", (data: any) => {
+      console.log(data.toString());
     });
   } catch (error) {
     res.status(400).json({ message: "error" });

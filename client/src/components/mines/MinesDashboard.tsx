@@ -89,17 +89,22 @@ const MinesDashboard: React.FC = () => {
   // Handle Bet
   const handleBet = () => {
     if (userMoneyExample > 0) {
-      Axios.post("http://localhost:5000/api/minesRandomizer", {
+      Axios.post(`${process.env.REACT_APP_BACKEND}/api/minesRandomizer`, {
         minesTotal: minesTotalRef.current?.value,
-      }).then((result) => {
-        setCheckedMines(resetPlayboard);
-        setLoading(true);
-        setTimeout(() => {
-          setGameStart(true);
-          setLoading(false);
-          setPlayboard(result.data.randomizedPlayboard);
-        }, 600);
-      });
+      })
+        .then((result) => {
+          setCheckedMines(resetPlayboard);
+          setLoading(true);
+          setTimeout(() => {
+            setGameStart(true);
+            setLoading(false);
+            setPlayboard(result.data.randomizedPlayboard);
+          }, 600);
+        })
+        .catch((err) => {
+          console.log("word");
+          console.log(err);
+        });
     }
   };
 

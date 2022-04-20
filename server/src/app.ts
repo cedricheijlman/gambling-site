@@ -9,9 +9,14 @@ const playerRouter = require("./routes/playerRoutes");
 const minesRouter = require("./routes/minesRoutes");
 
 const app: Application = express();
-const PORT = process.env.port || 5000;
+const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+let corsOptions = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get("/", (req: Request, res: Response) => {
