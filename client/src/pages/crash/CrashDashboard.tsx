@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Chart } from "react-chartjs-2";
 import { Line } from "react-chartjs-2";
+import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import "./CrashDashboard.css";
 import {
   Chart as ChartJS,
@@ -31,8 +32,14 @@ const CrashDashboard: React.FC = () => {
   return (
     <div className="crashDashboard">
       <div className="betContainer">
-        <h2>BetContainer</h2>{" "}
+        <p>Bet Amount</p>
+        <div className="moneyInput">
+          <AttachMoneyIcon className="moneyIcon" />
+          <input type="number" />
+          <button className="maxButton">Max</button>
+        </div>
         <button
+          className="betButton"
           onClick={() => {
             setData([...data, data.length + 10]);
           }}

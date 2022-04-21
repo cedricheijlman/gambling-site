@@ -7,9 +7,10 @@
 /* Bet Container */
 
 .crashDashboard .betContainer {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border: 1px solid rgb(118, 116, 116);
   height: 100% !important;
-  border-radius: 10px;
+  border-radius: 6px;
   padding: 15px 20px;
   width: 30%;
   display: flex;
@@ -17,9 +18,57 @@
   margin-right: 10px;
 }
 
-.crashDashboard .betContainer button {
+.crashDashboard .betContainer .moneyInput {
   width: 100%;
-  padding: 15px;
+  background-color: rgb(55, 54, 54);
+  height: 45px;
+  display: flex;
+  margin-top: 3px;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.crashDashboard .betContainer .moneyIcon {
+  margin: 0 10px;
+}
+
+.crashDashboard .betContainer .moneyInput input {
+  height: 100%;
+  font-weight: 600;
+
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  color: rgb(129, 128, 128);
+  padding-left: 10px;
+  outline: none;
+  background-color: rgb(44, 44, 44);
+}
+
+.crashDashboard .betContainer .maxButton {
+  height: 100%;
+  border: none;
+  background-color: rgb(91, 91, 91);
+  color: rgb(205, 199, 199);
+  font-family: "Poppins";
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0 15px;
+  border-radius: 0 5px 5px 0;
+}
+
+.crashDashboard .betContainer .betButton {
+  font-weight: 500;
+  font-family: "Poppins";
+  border: none;
+  outline: none;
+  background-color: #2ecc71;
+  padding: 12px 0;
+  font-size: 16px;
+  border-radius: 7px;
+  cursor: pointer;
+  margin-top: 15px;
 }
 
 /* Chart Container */
@@ -28,5 +77,6 @@
   padding: 15px;
   width: 70%;
   border: 1px solid rgb(95, 94, 94);
-  border-radius: 10px;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
