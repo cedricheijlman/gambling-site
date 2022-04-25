@@ -2,9 +2,12 @@ import React, { useRef, useState } from "react";
 import "./MinesDashboard.css";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import Axios from "axios";
+import { useSelector } from "react-redux";
 
 const MinesDashboard: React.FC = () => {
-  const userMoneyExample: number = 500003;
+  const userMoneyExample: number = useSelector(
+    (state: any) => state.balance.balance
+  );
 
   // Dynamic Playboard
   const [playBoard, setPlayboard] = useState([
@@ -51,7 +54,7 @@ const MinesDashboard: React.FC = () => {
   );
 
   // Bet Amount
-  const [betAmountValue, setBetAmountValue] = useState(500);
+  const [betAmountValue, setBetAmountValue] = useState(0);
 
   // Keep track of cashout money
   const [cashoutMoney, setCashoutMoney] = useState(Number(betAmountValue));
@@ -59,9 +62,6 @@ const MinesDashboard: React.FC = () => {
   // Change bet amount value
   const changeBetAmountValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (Number(e.target.value) <= userMoneyExample) {
-      console.log("he;;p");
-      console.log(e);
-
       setBetAmountValue(Number(e.target.value));
     }
   };
