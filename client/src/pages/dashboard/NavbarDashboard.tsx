@@ -3,13 +3,12 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./NavbarDashboard.css";
 const NavbarDashboard: React.FC = () => {
-  const count = useSelector((state: any) => state.balance.balance);
+  const userBalance = useSelector((state: any) => state.balance.balance);
   return (
     <nav className="dashboard__nav">
       <h2>Betting Ball</h2>
       <div className="dashboard__options">
         <Link to={"/dashboard"}>
-          {" "}
           <p>Dashboard</p>
         </Link>
         <p>Games</p>
@@ -17,7 +16,7 @@ const NavbarDashboard: React.FC = () => {
       </div>
       <div className="nav__right">
         <div className="nav__rightMoneyContainer">
-          <p>${count}</p>
+          <p>${userBalance}</p>
           <button>Wallet</button>
         </div>
         <div className="nav__rightName">

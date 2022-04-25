@@ -61,7 +61,9 @@ const Signup: React.FC = () => {
           if (res.data.errorCode == 0.1) {
             return setEmailError(res.data.message);
           }
+
           window.location.pathname = "/dashboard";
+
           console.log(res);
         })
         .catch(() => {
