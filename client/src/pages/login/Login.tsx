@@ -1,11 +1,12 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
 import "./Login.css";
 
 export const Login: React.FC = () => {
+  const navigate: NavigateFunction = useNavigate();
   // Login inputs
   const [username, setUsername] = useState<string | undefined>("");
   const [usernameError, setUsernameError] = useState("");
@@ -53,8 +54,7 @@ export const Login: React.FC = () => {
           if (res.data.errorCode == 1) {
             return setPasswordError(res.data.message);
           }
-
-          window.location.pathname = "/dashboard";
+          navigate("/dashboard");
         })
         .catch(() => {
           window.location.pathname = "/";

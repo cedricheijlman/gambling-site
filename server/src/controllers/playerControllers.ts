@@ -35,13 +35,19 @@ const playerLogin = async (req: Request, res: Response) => {
 
     // Create JWT Access Token
     const accessToken = await jwt.sign(
-      { username: username },
+      {
+        username: username,
+        email: findPlayer.dataValues.email,
+        id: findPlayer.dataValues.id,
+        balance: findPlayer.dataValues.balance,
+      },
       String(process.env.SECRET_CODE)
     );
-    console.log(findPlayer.dataValues);
+
     // user is logged in
     return res.status(200).json({
       message: "User logged in",
+      accessToken: accessToken,
     });
   } catch (error) {
     res.status(400).json({
@@ -94,7 +100,12 @@ const playerRegister = async (req: Request, res: Response) => {
 
     // Create JSON Web Token
     const accessToken = await jwt.sign(
-      { username: username, email: email },
+      {
+        username: username,
+        email: email,
+        id: newUser.dataValues.id,
+        balance: 0,
+      },
       String(process.env.SECRET_CODE)
     );
 
