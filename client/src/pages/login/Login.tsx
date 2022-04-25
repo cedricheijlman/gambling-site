@@ -1,12 +1,14 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
 import "./Login.css";
 
 export const Login: React.FC = () => {
   const navigate: NavigateFunction = useNavigate();
+
   // Login inputs
   const [username, setUsername] = useState<string | undefined>("");
   const [usernameError, setUsernameError] = useState("");

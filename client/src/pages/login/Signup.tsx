@@ -1,11 +1,14 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
 import "./Signup.css";
 
 const Signup: React.FC = () => {
+  const dispatch = useDispatch();
+
   // Register inputs
   const [username, setUsername] = useState<string | undefined>("");
   const [usernameError, setUsernameError] = useState("");
