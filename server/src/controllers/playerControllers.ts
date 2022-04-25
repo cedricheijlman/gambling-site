@@ -82,6 +82,7 @@ const playerRegister = async (req: Request, res: Response) => {
       username,
       email,
       password: hashedPassword,
+      balance: 0,
     });
 
     return res.status(200).json({

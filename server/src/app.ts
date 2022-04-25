@@ -32,4 +32,6 @@ db.sync({ force: true })
       console.log(`Server running on port: ${PORT}`);
     });
   })
-  .catch(() => {});
+  .catch((err: Error) => {
+    console.log(err);
+  });

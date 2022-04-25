@@ -25,6 +25,10 @@ const Player = db.define(
       type: DataTypes.STRING(64),
       allowNull: false,
     },
+    balance: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     freezeTableName: true,
