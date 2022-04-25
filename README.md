@@ -5,7 +5,7 @@ An online betting site where you can play betting games with fake money and can 
 * Typescript
 * HTML/CSS
 * React
-* Redux (State Managment)
+* Redux (State Management)
 * Node.js
 * Express
 * Python AI probability scripts
