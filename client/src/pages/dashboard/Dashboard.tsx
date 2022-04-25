@@ -29,7 +29,6 @@ export const Dashboard: React.FC = () => {
       { headers: headers }
     )
       .then((res) => {
-        console.log(res);
         dispatch(userLoggedIn());
       })
       .catch((err: Error) => {
