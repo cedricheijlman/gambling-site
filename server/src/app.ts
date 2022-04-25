@@ -7,6 +7,7 @@ const db = require("./config/database.config");
 const Player = require("./models/player");
 const playerRouter = require("./routes/playerRoutes");
 const minesRouter = require("./routes/minesRoutes");
+const authRouter = require("./routes/authRoutes");
 
 const app: Application = express();
 const PORT = process.env.PORT || 5000;
@@ -25,6 +26,7 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api", playerRouter);
 app.use("/api", minesRouter);
+app.use("/api", authRouter);
 
 db.sync({ force: true })
   .then((res: any) => {
