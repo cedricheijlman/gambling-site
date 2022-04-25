@@ -54,6 +54,7 @@ export const Login: React.FC = () => {
           if (res.data.errorCode == 1) {
             return setPasswordError(res.data.message);
           }
+          localStorage.setItem("accessToken", res.data.accessToken);
           navigate("/dashboard");
         })
         .catch(() => {

@@ -11,6 +11,7 @@ export const Dashboard: React.FC = () => {
     Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
   };
 
+  // Verify User Login
   useEffect(() => {
     Axios.post(
       `${process.env.REACT_APP_BACKEND}/api/verifyUser`,
@@ -20,8 +21,8 @@ export const Dashboard: React.FC = () => {
       .then((res) => {
         console.log(res);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((err: Error) => {
+        window.location.pathname = "/";
       });
   }, []);
 
