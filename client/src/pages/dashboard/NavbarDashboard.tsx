@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./NavbarDashboard.css";
 const NavbarDashboard: React.FC = () => {
+  const count = useSelector((state: any) => state.balance.balance);
   return (
     <nav className="dashboard__nav">
       <h2>Betting Ball</h2>
@@ -15,7 +17,7 @@ const NavbarDashboard: React.FC = () => {
       </div>
       <div className="nav__right">
         <div className="nav__rightMoneyContainer">
-          <p>$3105.00</p>
+          <p>${count}</p>
           <button>Wallet</button>
         </div>
         <div className="nav__rightName">
