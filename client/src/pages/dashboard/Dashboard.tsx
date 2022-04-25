@@ -1,10 +1,30 @@
-import React from "react";
+import Axios, { AxiosRequestHeaders } from "axios";
+import React, { useEffect } from "react";
 import MinesDashboard from "../../components/mines/MinesDashboard";
 import CrashDashboard from "../crash/CrashDashboard";
 import "./Dashboard.css";
 import NavbarDashboard from "./NavbarDashboard";
 
 export const Dashboard: React.FC = () => {
+  const headers: AxiosRequestHeaders = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  };
+
+  useEffect(() => {
+    Axios.post(
+      `${process.env.REACT_APP_BACKEND}/api/verifyUser`,
+      {},
+      { headers: headers }
+    )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div className="dashboardWrapper">
       <NavbarDashboard />
