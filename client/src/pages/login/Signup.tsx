@@ -4,11 +4,10 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
+
 import "./Signup.css";
 
 const Signup: React.FC = () => {
-  const dispatch = useDispatch();
-
   // Register inputs
   const [username, setUsername] = useState<string | undefined>("");
   const [usernameError, setUsernameError] = useState("");
@@ -64,10 +63,9 @@ const Signup: React.FC = () => {
           if (res.data.errorCode == 0.1) {
             return setEmailError(res.data.message);
           }
+
           localStorage.setItem("accessToken", res.data.accessToken);
           window.location.pathname = "/dashboard";
-
-          console.log(res);
         })
         .catch(() => {
           window.location.pathname = "/";

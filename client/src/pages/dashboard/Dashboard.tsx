@@ -1,14 +1,20 @@
 import Axios, { AxiosRequestHeaders } from "axios";
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MinesDashboard from "../../components/mines/MinesDashboard";
+import { userLoggedIn } from "../../features/currentUser/currentUserSlice";
 import CrashDashboard from "../crash/CrashDashboard";
 import "./Dashboard.css";
 import NavbarDashboard from "./NavbarDashboard";
 
 export const Dashboard: React.FC = () => {
   // user logged in state
-  const userLoggedIn = useSelector((state: any) => state.currentUser.loggedIn);
+  const userLoggedInState = useSelector(
+    (state: any) => state.currentUser.loggedIn
+  );
+
+  // dispatch
+  const dispatch = useDispatch();
 
   const headers: AxiosRequestHeaders = {
     "Content-Type": "application/json",
@@ -24,6 +30,7 @@ export const Dashboard: React.FC = () => {
     )
       .then((res) => {
         console.log(res);
+        dispatch(userLoggedIn());
       })
       .catch((err: Error) => {
         window.location.pathname = "/";
@@ -32,7 +39,7 @@ export const Dashboard: React.FC = () => {
 
   return (
     <>
-      {userLoggedIn && (
+      {userLoggedInState == true && (
         <div className="dashboardWrapper">
           <NavbarDashboard />
 
