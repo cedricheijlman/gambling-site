@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 const { Op } = require("sequelize");
+import jwt from "jsonwebtoken";
 
 const Player = require("../models/player");
 
@@ -32,6 +33,12 @@ const playerLogin = async (req: Request, res: Response) => {
         .json({ errorCode: 1, message: "Wrong Credentials" });
     }
 
+    // Create JWT Access Token
+    const accessToken = await jwt.sign(
+      { username: username },
+      String(process.env.SECRET_CODE)
+    );
+    console.log(findPlayer.dataValues);
     // user is logged in
     return res.status(200).json({
       message: "User logged in",
@@ -49,7 +56,7 @@ const playerRegister = async (req: Request, res: Response) => {
     const { username, email, password } = req.body;
 
     // Check if user exists
-    const findPlayer = await Player.findOne({
+    const findPlayer: Object | null | undefined = await Player.findOne({
       where: {
         username,
       },
@@ -85,8 +92,15 @@ const playerRegister = async (req: Request, res: Response) => {
       balance: 0,
     });
 
+    // Create JSON Web Token
+    const accessToken = await jwt.sign(
+      { username: username, email: email },
+      String(process.env.SECRET_CODE)
+    );
+
     return res.status(200).json({
       message: "User created",
+      accessToken: accessToken,
     });
   } catch (error) {
     console.log(error);
