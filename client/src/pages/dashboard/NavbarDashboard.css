@@ -90,3 +90,15 @@
   font-weight: 900;
   margin: 0 15px;
 }
+
+/* -------- Media Queries -------- */
+
+@media (max-width: 900px) {
+  .dashboard__nav {
+    flex-direction: column;
+  }
+
+  .dashboard__nav .dashboard__options {
+    margin: 10px 0;
+  }
+}
