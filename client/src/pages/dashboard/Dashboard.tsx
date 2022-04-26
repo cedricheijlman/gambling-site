@@ -38,7 +38,7 @@ export const Dashboard: React.FC = () => {
         dispatch(userLoggedIn());
         dispatch(setUsername(res.data.username));
         dispatch(setBalance(res.data.balance));
-        dispatch(setUserId(res.data.id));
+        dispatch(setUserId(res.data.userId));
       })
       .catch((err: Error) => {
         window.location.pathname = "/";

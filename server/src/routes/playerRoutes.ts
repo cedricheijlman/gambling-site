@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+import authMiddelware from "../middleware/authMiddelware";
 const {
   playerLogin,
   playerRegister,
@@ -9,6 +10,6 @@ const router = express.Router();
 
 router.post("/login", playerLogin);
 router.post("/register", playerRegister);
-router.post("/claimBonus", claimWelcomeBonus);
+router.post("/claimBonus", authMiddelware, claimWelcomeBonus);
 
 module.exports = router;

@@ -124,9 +124,17 @@ const playerRegister = async (req: Request, res: Response) => {
 
 const claimWelcomeBonus = async (req: Request, res: Response) => {
   try {
-    res.status(200).json("Message");
+    const { userId } = req.body;
+
+    const claimBonus = await Player.increment(
+      { balance: +1000 },
+      { where: { id: userId } }
+    );
+
+    return res.status(200).json("Message");
   } catch (error) {
-    res.status(400).json("Error");
+    console.log(error);
+    return res.status(400).json("Error");
   }
 };
 
