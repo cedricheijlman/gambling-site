@@ -2,12 +2,15 @@ import React, { useRef, useState } from "react";
 import "./MinesDashboard.css";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import Axios, { AxiosRequestHeaders } from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setBalance } from "../../features/balance/balanceSlice";
 
 const MinesDashboard: React.FC = () => {
-  const userMoneyExample: number = useSelector(
-    (state: any) => state.balance.balance
-  );
+  // User Balance
+  const userMoney: number = useSelector((state: any) => state.balance.balance);
+
+  // useDispatch
+  const dispatch = useDispatch();
 
   // Dynamic Playboard
   const [playBoard, setPlayboard] = useState([
@@ -61,7 +64,7 @@ const MinesDashboard: React.FC = () => {
 
   // Change bet amount value
   const changeBetAmountValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (Number(e.target.value) <= userMoneyExample) {
+    if (Number(e.target.value) <= userMoney) {
       setBetAmountValue(Number(e.target.value));
     }
   };
@@ -93,7 +96,7 @@ const MinesDashboard: React.FC = () => {
       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     };
 
-    if (userMoneyExample > 0) {
+    if (userMoney > 0) {
       Axios.post(
         `${process.env.REACT_APP_BACKEND}/api/minesRandomizer`,
         {
@@ -123,7 +126,15 @@ const MinesDashboard: React.FC = () => {
     let win: HTMLAudioElement = new Audio("./win.wav");
     win.volume = 0.4;
     win.play();
-
+    dispatch(
+      setBalance(
+        Number(
+          (
+            Math.round((userMoney + cashoutMoney - betAmountValue) * 100) / 100
+          ).toFixed(2)
+        )
+      )
+    );
     setCheckedMines(fullyCheckedPlayboard);
     setGameStart(false);
     setCashoutMoney(0);
@@ -131,9 +142,17 @@ const MinesDashboard: React.FC = () => {
 
   // If player clicks on bomb
   const handleLoseGame = () => {
-    console.log("lost game");
+    dispatch(
+      setBalance(
+        Number(
+          (Math.round((userMoney - betAmountValue) * 100) / 100).toFixed(2)
+        )
+      )
+    );
+
     setCheckedMines(fullyCheckedPlayboard);
     setGameStart(false);
+    setBetAmountValue(0);
 
     setCashoutMoney(0);
   };
