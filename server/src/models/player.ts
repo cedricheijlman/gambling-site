@@ -29,6 +29,10 @@ const Player = db.define(
       type: DataTypes.FLOAT,
       allowNull: false,
     },
+    welcomeBonusClaimed: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
   },
   {
     freezeTableName: true,

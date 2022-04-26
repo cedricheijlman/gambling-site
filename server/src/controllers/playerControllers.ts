@@ -96,6 +96,7 @@ const playerRegister = async (req: Request, res: Response) => {
       email,
       password: hashedPassword,
       balance: 500,
+      welcomeBonusClaimed: false,
     });
 
     // Create JSON Web Token
@@ -125,6 +126,17 @@ const playerRegister = async (req: Request, res: Response) => {
 const claimWelcomeBonus = async (req: Request, res: Response) => {
   try {
     const { userId } = req.body;
+
+    const findUser = await Player.findOne({ where: { id: userId } });
+
+    if (findUser.dataValues?.welcomeBonusClaimed == true) {
+      return res.status(200).json({ message: "Already Claimed" });
+    }
+
+    const updateUser = await Player.update(
+      { welcomeBonusClaimed: true },
+      { where: { id: userId } }
+    );
 
     const claimBonus = await Player.increment(
       { balance: +1000 },
