@@ -195,7 +195,7 @@ const MinesDashboard: React.FC = () => {
     setGameStart(false);
 
     // Reset bet amount Value
-    setBetAmountValue(0);
+    setBetAmountValue("");
 
     // Reset Cashout Money
     setCashoutMoney(0);
@@ -241,7 +241,14 @@ const MinesDashboard: React.FC = () => {
           <div className="minesContainer__betContainer">
             <AttachMoneyIcon className="moneyIcon" />
             <input value={betAmountValue} onChange={changeBetAmountValue} />
-            <button className="maxButton">Max</button>
+            <button
+              onClick={() => {
+                setBetAmountValue(userMoney);
+              }}
+              className="maxButton"
+            >
+              Max
+            </button>
           </div>
           <div className="minesContainer__minesTotal">
             <p>Mines</p>
