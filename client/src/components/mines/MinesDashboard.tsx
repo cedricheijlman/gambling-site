@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import "./MinesDashboard.css";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
-import Axios from "axios";
+import Axios, { AxiosRequestHeaders } from "axios";
 import { useSelector } from "react-redux";
 
 const MinesDashboard: React.FC = () => {
@@ -88,10 +88,19 @@ const MinesDashboard: React.FC = () => {
 
   // Handle Bet
   const handleBet = () => {
+    const headers: AxiosRequestHeaders = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    };
+
     if (userMoneyExample > 0) {
-      Axios.post(`${process.env.REACT_APP_BACKEND}/api/minesRandomizer`, {
-        minesTotal: minesTotalRef.current?.value,
-      })
+      Axios.post(
+        `${process.env.REACT_APP_BACKEND}/api/minesRandomizer`,
+        {
+          minesTotal: minesTotalRef.current?.value,
+        },
+        { headers: headers }
+      )
         .then((result) => {
           setCheckedMines(resetPlayboard);
           setCashoutMoney(Number(betAmountValue));
