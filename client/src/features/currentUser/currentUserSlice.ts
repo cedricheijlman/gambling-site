@@ -16,9 +16,16 @@ export const currentUserSlice = createSlice({
     setUsername: (state, action) => {
       state.username = action.payload;
     },
+
+    userLogout: (state) => {
+      state.loggedIn = false;
+      window.localStorage.removeItem("accessToken");
+      window.location.pathname = "/";
+    },
   },
 });
 
-export const { userLoggedIn, setUsername } = currentUserSlice.actions;
+export const { userLoggedIn, setUsername, userLogout } =
+  currentUserSlice.actions;
 
 export default currentUserSlice.reducer;

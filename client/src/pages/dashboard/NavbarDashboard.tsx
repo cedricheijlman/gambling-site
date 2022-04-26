@@ -1,12 +1,25 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { userLogout } from "../../features/currentUser/currentUserSlice";
 import "./NavbarDashboard.css";
 const NavbarDashboard: React.FC = () => {
-  const userBalance = useSelector((state: any) => state.balance.balance);
-  const currentUsername = useSelector(
+  // Dispatch
+  const dispatch = useDispatch();
+
+  // { User username, User Current Balance } State
+  const userBalance: number = useSelector(
+    (state: any) => state.balance.balance
+  );
+  const currentUsername: string = useSelector(
     (state: any) => state.currentUser.username
   );
+
+  // Handle Logout
+  const handleLogout = () => {
+    dispatch(userLogout());
+  };
+
   return (
     <nav className="dashboard__nav">
       <h2>Betting Ball</h2>
@@ -24,7 +37,13 @@ const NavbarDashboard: React.FC = () => {
         </div>
         <div className="nav__rightName">
           <p>{currentUsername}</p>
-          <button>Log Out</button>
+          <button
+            onClick={() => {
+              handleLogout();
+            }}
+          >
+            Log Out
+          </button>
         </div>
         <img height={40} width={40} src="./logo192.png" />
       </div>

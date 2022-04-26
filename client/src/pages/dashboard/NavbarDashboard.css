@@ -67,6 +67,12 @@
   cursor: pointer;
 }
 
+.nav__rightName button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: white;
+}
+
 .dashboard__nav img {
   background-color: white;
   border-radius: 13px;

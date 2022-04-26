@@ -28,21 +28,29 @@ const Signup: React.FC = () => {
 
   // Verify User Login
   useEffect(() => {
-    axios
-      .post(
-        `${process.env.REACT_APP_BACKEND}/api/verifyUser`,
-        {},
-        { headers: headers }
-      )
-      .then((res) => {
-        dispatch(userLoggedIn());
-        dispatch(setUsername(res.data.username));
-        dispatch(setBalance(res.data.balance));
-        navigate("/dashboard");
-      })
-      .catch((err: Error) => {
-        window.location.pathname = "/";
-      });
+    if (
+      localStorage.getItem("accessToken") !== "" &&
+      localStorage.getItem("accessToken") !== null &&
+      localStorage.getItem("accessToken") !== undefined
+    ) {
+      axios
+        .post(
+          `${process.env.REACT_APP_BACKEND}/api/verifyUser`,
+          {},
+          { headers: headers }
+        )
+        .then((res) => {
+          dispatch(userLoggedIn());
+          dispatch(setUsername(res.data.username));
+          dispatch(setBalance(res.data.balance));
+          navigate("/dashboard");
+        })
+        .catch((err: Error) => {
+          localStorage.removeItem("accessToken");
+        });
+    } else {
+      localStorage.removeItem("accessToken");
+    }
   }, []);
 
   /*-------------------{  Signup  }----------------------- */
