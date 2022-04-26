@@ -48,7 +48,7 @@ const Signup: React.FC = () => {
   /*-------------------{  Signup  }----------------------- */
 
   // Register inputs
-  const [username, setLoginUsername] = useState<string | undefined>("");
+  const [username, setRegisterUsername] = useState<string | undefined>("");
   const [usernameError, setUsernameError] = useState("");
 
   const [password, setPassword] = useState<string | undefined>("");
@@ -132,7 +132,7 @@ const Signup: React.FC = () => {
           <input
             value={username}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setLoginUsername(e.target.value);
+              setRegisterUsername(e.target.value);
             }}
           />
           <div className="form__label">
