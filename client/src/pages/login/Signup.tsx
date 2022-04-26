@@ -125,7 +125,7 @@ const Signup: React.FC = () => {
       <Navbar />
       <div className="signup__container">
         <img className="signup__background" src="./loginbackground.jpg" />
-        <h1>Betting Ball</h1>
+
         <form onSubmit={handleSubmit} className="signup__form">
           <h2>Create your account</h2>
           <p className="signup__formDescription">

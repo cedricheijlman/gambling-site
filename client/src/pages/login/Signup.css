@@ -101,3 +101,15 @@
 .signup__form button:hover {
   transform: scale(1.011);
 }
+
+/* ------- Media Queries ------- */
+
+@media (max-width: 495px) {
+  .signup__form p {
+    display: none;
+  }
+
+  .signup__form {
+    width: 90%;
+  }
+}

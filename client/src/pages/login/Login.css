@@ -88,3 +88,9 @@
 .login__form button:hover {
   transform: scale(1.011);
 }
+
+/* ------ Media Queries ------ */
+
+.login__form {
+  width: 90%;
+}

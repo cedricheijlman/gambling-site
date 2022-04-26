@@ -6,6 +6,7 @@
   align-items: center;
   width: 100%;
   position: fixed;
+  flex-wrap: nowrap;
   justify-content: space-between;
   display: flex;
   z-index: 99;
@@ -13,4 +14,14 @@
 
 .navbar h2 {
   font-size: 27px;
+}
+
+@media (max-width: 495px) {
+  .navbar h2 {
+    margin-bottom: 10px;
+  }
+
+  .navbar {
+    flex-direction: column;
+  }
 }

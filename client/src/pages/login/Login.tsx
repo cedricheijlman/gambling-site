@@ -115,7 +115,6 @@ export const Login: React.FC = () => {
       <Navbar />
       <div className="login__container">
         <img className="login__background" src="./loginbackground.jpg" />
-        <h1>Betting Ball</h1>
         <form onSubmit={handleSubmit} className="login__form">
           <h2>Sign in</h2>
           <p>Login into your account</p>
