@@ -26,10 +26,14 @@ const verifyUserToken = async (req: Request, res: Response) => {
           if (!findUser) {
             return res.status(400).json("Error");
           }
-          console.log(findUser.dataValues);
+
           return res
             .status(200)
-            .json({ balance: findUser.dataValues?.balance, user });
+            .json({
+              username: findUser.dataValues?.username,
+              balance: findUser.dataValues?.balance,
+              user,
+            });
         }
       );
     }

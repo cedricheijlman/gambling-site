@@ -1,15 +1,54 @@
-import axios from "axios";
-import React from "react";
+import axios, { AxiosRequestHeaders } from "axios";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
+import { setBalance } from "../../features/balance/balanceSlice";
+import {
+  setUsername,
+  userLoggedIn,
+} from "../../features/currentUser/currentUserSlice";
 
 import "./Signup.css";
 
 const Signup: React.FC = () => {
+  /* -------------------{  User already logged in }----------------------- */
+  // Dispatch
+  const dispatch = useDispatch();
+
+  // Navigate
+  const navigate: NavigateFunction = useNavigate();
+
+  // Authentication Headers
+  const headers: AxiosRequestHeaders = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  };
+
+  // Verify User Login
+  useEffect(() => {
+    axios
+      .post(
+        `${process.env.REACT_APP_BACKEND}/api/verifyUser`,
+        {},
+        { headers: headers }
+      )
+      .then((res) => {
+        dispatch(userLoggedIn());
+        dispatch(setUsername(res.data.username));
+        dispatch(setBalance(res.data.balance));
+        navigate("/dashboard");
+      })
+      .catch((err: Error) => {
+        window.location.pathname = "/";
+      });
+  }, []);
+
+  /*-------------------{  Signup  }----------------------- */
+
   // Register inputs
-  const [username, setUsername] = useState<string | undefined>("");
+  const [username, setLoginUsername] = useState<string | undefined>("");
   const [usernameError, setUsernameError] = useState("");
 
   const [password, setPassword] = useState<string | undefined>("");
@@ -93,7 +132,7 @@ const Signup: React.FC = () => {
           <input
             value={username}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setUsername(e.target.value);
+              setLoginUsername(e.target.value);
             }}
           />
           <div className="form__label">

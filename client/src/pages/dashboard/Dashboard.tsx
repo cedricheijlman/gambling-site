@@ -3,7 +3,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MinesDashboard from "../../components/mines/MinesDashboard";
 import { setBalance } from "../../features/balance/balanceSlice";
-import { userLoggedIn } from "../../features/currentUser/currentUserSlice";
+import {
+  setUsername,
+  userLoggedIn,
+} from "../../features/currentUser/currentUserSlice";
 import CrashDashboard from "../crash/CrashDashboard";
 import "./Dashboard.css";
 import NavbarDashboard from "./NavbarDashboard";
@@ -31,6 +34,7 @@ export const Dashboard: React.FC = () => {
     )
       .then((res) => {
         dispatch(userLoggedIn());
+        dispatch(setUsername(res.data.username));
         dispatch(setBalance(res.data.balance));
       })
       .catch((err: Error) => {
