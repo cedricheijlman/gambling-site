@@ -1,7 +1,7 @@
 import Axios, { AxiosRequestHeaders } from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import MinesDashboard from "../../components/mines/MinesDashboard";
+import MinesDashboard from "../mines/MinesDashboard";
 import { setBalance } from "../../features/balance/balanceSlice";
 import {
   setUserId,
