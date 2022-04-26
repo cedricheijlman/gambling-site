@@ -2,6 +2,7 @@ import Axios, { AxiosRequestHeaders } from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MinesDashboard from "../../components/mines/MinesDashboard";
+import { setBalance } from "../../features/balance/balanceSlice";
 import { userLoggedIn } from "../../features/currentUser/currentUserSlice";
 import CrashDashboard from "../crash/CrashDashboard";
 import "./Dashboard.css";
@@ -30,6 +31,7 @@ export const Dashboard: React.FC = () => {
     )
       .then((res) => {
         dispatch(userLoggedIn());
+        dispatch(setBalance(res.data.balance));
       })
       .catch((err: Error) => {
         window.location.pathname = "/";
