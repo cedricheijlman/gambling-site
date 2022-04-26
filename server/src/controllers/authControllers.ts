@@ -31,6 +31,7 @@ const verifyUserToken = async (req: Request, res: Response) => {
             username: findUser.dataValues?.username,
             balance: findUser.dataValues?.balance,
             userId: findUser.dataValues?.id,
+            welcomeBonus: findUser.dataValues?.welcomeBonusClaimed,
             user,
           });
         }

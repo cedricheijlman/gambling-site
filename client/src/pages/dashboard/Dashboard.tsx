@@ -6,6 +6,7 @@ import { setBalance } from "../../features/balance/balanceSlice";
 import {
   setUserId,
   setUsername,
+  setWelcomeBonus,
   userLoggedIn,
 } from "../../features/currentUser/currentUserSlice";
 import CrashDashboard from "../crash/CrashDashboard";
@@ -36,6 +37,7 @@ export const Dashboard: React.FC = () => {
     )
       .then((res) => {
         dispatch(userLoggedIn());
+        dispatch(setWelcomeBonus(res.data.welcomeBonus));
         dispatch(setUsername(res.data.username));
         dispatch(setBalance(res.data.balance));
         dispatch(setUserId(res.data.userId));

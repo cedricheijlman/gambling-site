@@ -4,6 +4,7 @@ const initialState = {
   loggedIn: false,
   username: "Username",
   userIdState: null,
+  welcomeBonus: false,
 };
 
 export const currentUserSlice = createSlice({
@@ -22,6 +23,10 @@ export const currentUserSlice = createSlice({
       state.userIdState = action.payload;
     },
 
+    setWelcomeBonus: (state, action) => {
+      state.welcomeBonus = action.payload;
+    },
+
     userLogout: (state) => {
       state.loggedIn = false;
       window.localStorage.removeItem("accessToken");
@@ -30,7 +35,12 @@ export const currentUserSlice = createSlice({
   },
 });
 
-export const { userLoggedIn, setUsername, userLogout, setUserId } =
-  currentUserSlice.actions;
+export const {
+  userLoggedIn,
+  setUsername,
+  userLogout,
+  setUserId,
+  setWelcomeBonus,
+} = currentUserSlice.actions;
 
 export default currentUserSlice.reducer;

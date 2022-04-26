@@ -2,12 +2,16 @@ import Axios, { AxiosRequestHeaders } from "axios";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setBalance } from "../../features/balance/balanceSlice";
+import { setWelcomeBonus } from "../../features/currentUser/currentUserSlice";
 import "./WalletDashboard.css";
 
 const WalletDashboard: React.FC = () => {
   const userBalance = useSelector((state: any) => state.balance.balance);
   const userName = useSelector((state: any) => state.currentUser.username);
   const userId = useSelector((state: any) => state.currentUser.userIdState);
+  const welcomeBonus = useSelector(
+    (state: any) => state.currentUser.welcomeBonus
+  );
 
   // Dispatch
   let dispatch = useDispatch();
@@ -31,6 +35,7 @@ const WalletDashboard: React.FC = () => {
           return console.log("Already Claimed");
         }
         dispatch(setBalance(userBalance + 1000));
+        dispatch(setWelcomeBonus(true));
       })
       .catch(() => {
         console.log("error");
@@ -46,13 +51,17 @@ const WalletDashboard: React.FC = () => {
       </div>
 
       <div className="claimBonus">
-        <button
-          onClick={() => {
-            handleBonus();
-          }}
-        >
-          Claim Welcome Bonus
-        </button>
+        {!welcomeBonus && (
+          <button
+            onClick={() => {
+              handleBonus();
+            }}
+          >
+            Claim Welcome Bonus
+          </button>
+        )}
+
+        {welcomeBonus && <button>Welcome Bonus Already Claimed</button>}
       </div>
     </div>
   );
