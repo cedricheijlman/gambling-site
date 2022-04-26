@@ -27,6 +27,7 @@ export const Login: React.FC = () => {
 
   // Verify User Login
   useEffect(() => {
+    document.title = "Login Page";
     if (
       localStorage.getItem("accessToken") !== "" &&
       localStorage.getItem("accessToken") !== null &&

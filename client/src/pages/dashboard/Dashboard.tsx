@@ -30,6 +30,7 @@ export const Dashboard: React.FC = () => {
 
   // Verify User Login
   useEffect(() => {
+    document.title = "Dashboard";
     Axios.post(
       `${process.env.REACT_APP_BACKEND}/api/verifyUser`,
       {},

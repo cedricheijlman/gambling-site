@@ -28,6 +28,7 @@ const Signup: React.FC = () => {
 
   // Verify User Login
   useEffect(() => {
+    document.title = "Signup Page";
     if (
       localStorage.getItem("accessToken") !== "" &&
       localStorage.getItem("accessToken") !== null &&

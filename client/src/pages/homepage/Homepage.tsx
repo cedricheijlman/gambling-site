@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LoginButton from "../../components/buttons/Loginbuttons";
 import Navbar from "../../components/navbar/Navbar";
 import "./Homepage.css";
 
 const Homepage: React.FC = () => {
+  useEffect(() => {
+    document.title = "Homepage";
+  }, []);
   return (
     <>
       <Navbar />
