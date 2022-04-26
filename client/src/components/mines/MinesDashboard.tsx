@@ -45,14 +45,14 @@ const MinesDashboard: React.FC = () => {
   );
 
   // Bet Amount
-  const [betAmountValue, setBetAmountValue] = useState(0);
+  const [betAmountValue, setBetAmountValue] = useState<any>("");
 
   // Keep track of cashout money
   const [cashoutMoney, setCashoutMoney] = useState(Number(betAmountValue));
 
   // Change bet amount value
   const changeBetAmountValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (Number(e.target.value) <= userMoney) {
+    if (Number(e.target.value) >= 0 && Number(e.target.value) <= userMoney) {
       setBetAmountValue(Number(e.target.value));
     }
   };
@@ -240,11 +240,7 @@ const MinesDashboard: React.FC = () => {
           <p>Bet Amount</p>
           <div className="minesContainer__betContainer">
             <AttachMoneyIcon className="moneyIcon" />
-            <input
-              type="number"
-              value={betAmountValue}
-              onChange={changeBetAmountValue}
-            />
+            <input value={betAmountValue} onChange={changeBetAmountValue} />
             <button className="maxButton">Max</button>
           </div>
           <div className="minesContainer__minesTotal">
