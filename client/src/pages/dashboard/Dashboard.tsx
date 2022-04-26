@@ -8,6 +8,7 @@ import {
   userLoggedIn,
 } from "../../features/currentUser/currentUserSlice";
 import CrashDashboard from "../crash/CrashDashboard";
+import WalletDashboard from "../wallet/WalletDashboard";
 import "./Dashboard.css";
 import NavbarDashboard from "./NavbarDashboard";
 
@@ -75,6 +76,12 @@ export const Dashboard: React.FC = () => {
           {window.location.pathname == "/crash" && (
             <div className="dashboardContainer">
               <CrashDashboard />
+            </div>
+          )}
+
+          {window.location.pathname == "/wallet" && (
+            <div className="dashboardContainer">
+              <WalletDashboard />
             </div>
           )}
         </div>

@@ -33,7 +33,9 @@ const NavbarDashboard: React.FC = () => {
       <div className="nav__right">
         <div className="nav__rightMoneyContainer">
           <p>${userBalance}</p>
-          <button>Wallet</button>
+          <Link to={"/wallet"}>
+            <button>Wallet</button>
+          </Link>
         </div>
         <div className="nav__rightName">
           <p>{currentUsername}</p>
