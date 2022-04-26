@@ -61,7 +61,11 @@ const WalletDashboard: React.FC = () => {
           </button>
         )}
 
-        {welcomeBonus && <button>Welcome Bonus Already Claimed</button>}
+        {welcomeBonus && (
+          <button className="welcomeBonusClaimed">
+            Welcome Bonus Already Claimed
+          </button>
+        )}
       </div>
     </div>
   );

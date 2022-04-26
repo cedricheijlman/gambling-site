@@ -39,6 +39,10 @@
   transition: all 0.5s;
 }
 
+.walletDashboard .welcomeBonusClaimed {
+  background-color: rgb(0, 68, 140) !important;
+}
+
 .walletDashboard .claimBonus button:hover {
   transform: scale(1.03);
   cursor: pointer;
