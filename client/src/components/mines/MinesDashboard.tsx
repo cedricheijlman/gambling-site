@@ -12,15 +12,6 @@ const MinesDashboard: React.FC = () => {
   // useDispatch
   const dispatch = useDispatch();
 
-  // Dynamic Playboard
-  const [playBoard, setPlayboard] = useState([
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-  ]);
-
   // Reset Playboard
   let resetPlayboard: number[][] = [
     [0, 0, 0, 0, 0],
@@ -29,6 +20,9 @@ const MinesDashboard: React.FC = () => {
     [0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0],
   ];
+
+  // Dynamic Playboard
+  const [playBoard, setPlayboard] = useState(resetPlayboard);
 
   // Playboard fully checked
   let fullyCheckedPlayboard: number[][] = [
@@ -40,13 +34,7 @@ const MinesDashboard: React.FC = () => {
   ];
 
   // Check Selected Mines
-  const [checkedMines, setCheckedMines] = useState([
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-  ]);
+  const [checkedMines, setCheckedMines] = useState(resetPlayboard);
 
   // check if game started
   const [gameStart, setGameStart] = useState(false);
@@ -89,13 +77,17 @@ const MinesDashboard: React.FC = () => {
   // Handle Loading when clicked on bet
   const [loading, setLoading] = useState(false);
 
+  /*-------------------{  Handle Game Start / Bet  }----------------------- */
+
   // Handle Bet
   const handleBet = () => {
+    // Auhthentication Header
     const headers: AxiosRequestHeaders = {
       "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     };
 
+    // If User current balance is greater than 0
     if (userMoney > 0) {
       Axios.post(
         `${process.env.REACT_APP_BACKEND}/api/minesRandomizer`,
@@ -105,9 +97,16 @@ const MinesDashboard: React.FC = () => {
         { headers: headers }
       )
         .then((result) => {
+          // Reset checked board
           setCheckedMines(resetPlayboard);
+
+          // Set Cashout Money
           setCashoutMoney(Number(betAmountValue));
+
+          // Set loading state true
           setLoading(true);
+
+          // in 600ms start game, turn loading false, Randomize Playboard
           setTimeout(() => {
             setGameStart(true);
             setLoading(false);
@@ -120,6 +119,8 @@ const MinesDashboard: React.FC = () => {
         });
     }
   };
+
+  /*-------------------{  Handle Cashout/Win  }----------------------- */
 
   // when player clicks on cashout button
   const handleCashout = () => {
@@ -162,6 +163,8 @@ const MinesDashboard: React.FC = () => {
     setCashoutMoney(0);
   };
 
+  /*-------------------{  Handle Lose Game  }----------------------- */
+
   // If player clicks on bomb
   const handleLoseGame = () => {
     const loseCompleteNewBalance = Number(
@@ -198,6 +201,8 @@ const MinesDashboard: React.FC = () => {
     setCashoutMoney(0);
   };
 
+  /*-------------------{  Image Handling Win/Lose  }----------------------- */
+
   // If player clicks on diamond
   const handleWin = () => {
     let totalBombs: number = Number(minesTotalRef?.current?.value);
@@ -227,7 +232,7 @@ const MinesDashboard: React.FC = () => {
       }
     }
   };
-
+  /*-------------------{  JSX  }----------------------- */
   return (
     <div className="minesWrapper">
       <div className="minesContainer">
