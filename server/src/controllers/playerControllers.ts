@@ -95,7 +95,7 @@ const playerRegister = async (req: Request, res: Response) => {
       username,
       email,
       password: hashedPassword,
-      balance: 0,
+      balance: 500,
     });
 
     // Create JSON Web Token

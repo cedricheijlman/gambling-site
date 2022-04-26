@@ -123,25 +123,48 @@ const MinesDashboard: React.FC = () => {
 
   // when player clicks on cashout button
   const handleCashout = () => {
+    // Set Win Sound
     let win: HTMLAudioElement = new Audio("./win.wav");
     win.volume = 0.4;
     win.play();
-    dispatch(
-      setBalance(
-        Number(
-          (
-            Math.round((userMoney + cashoutMoney - betAmountValue) * 100) / 100
-          ).toFixed(2)
-        )
-      )
+
+    // New Balance
+    const completeNewBalance = Number(
+      (
+        Math.round((userMoney + cashoutMoney - betAmountValue) * 100) / 100
+      ).toFixed(2)
     );
+
+    // Set New Balance State
+    dispatch(setBalance(completeNewBalance));
+
+    // Set New Balance Backend Request
+    const newBalanceHeaders: AxiosRequestHeaders = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    };
+
+    Axios.post(
+      `${process.env.REACT_APP_BACKEND}/api/minesBet`,
+      { completeNewBalance: completeNewBalance },
+      { headers: newBalanceHeaders }
+    ).then((res) => {
+      console.log(res);
+    });
+
+    // Fully Reveal Play Board
     setCheckedMines(fullyCheckedPlayboard);
+
+    // Set Game False
     setGameStart(false);
+
+    // Reset Cashout Money
     setCashoutMoney(0);
   };
 
   // If player clicks on bomb
   const handleLoseGame = () => {
+    // Set new balance state
     dispatch(
       setBalance(
         Number(
@@ -150,10 +173,16 @@ const MinesDashboard: React.FC = () => {
       )
     );
 
+    // Set checked mines
     setCheckedMines(fullyCheckedPlayboard);
+
+    // Set game false
     setGameStart(false);
+
+    // Reset bet amount Value
     setBetAmountValue(0);
 
+    // Reset Cashout Money
     setCashoutMoney(0);
   };
 
@@ -171,9 +200,12 @@ const MinesDashboard: React.FC = () => {
     if (gameStart && checkedMines[row][column] == 0) {
       let click: HTMLAudioElement = new Audio("./click.wav");
 
+      // Set Checked Mine Playboard
       let copy = [...checkedMines];
       copy[row][column] = 1;
       setCheckedMines(copy);
+
+      // Check if is bomb
       if (playBoard[row][column] == 1) {
         return handleLoseGame();
       } else if (playBoard[row][column] == 0) {

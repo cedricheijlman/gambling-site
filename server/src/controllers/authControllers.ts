@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
+const Player = require("../models/player");
 
 const verifyUserToken = async (req: Request, res: Response) => {
   try {
@@ -8,16 +9,32 @@ const verifyUserToken = async (req: Request, res: Response) => {
     if (authHeader) {
       const token: string | number = authHeader.split(" ")[1];
 
-      jwt.verify(token, String(process.env.SECRET_CODE), (err, user) => {
-        if (err) {
-          return res.status(403).json("Token is not valid");
-        }
+      jwt.verify(
+        token,
+        String(process.env.SECRET_CODE),
+        async (err: any, user: any) => {
+          if (err) {
+            return res.status(403).json("Token is not valid");
+          }
 
-        return res.status(200).json(user);
-      });
+          const findUser: any = await Player.findOne({
+            where: {
+              id: user.id,
+            },
+          });
+
+          if (!findUser) {
+            return res.status(400).json("Error");
+          }
+          console.log(findUser.dataValues);
+          return res
+            .status(200)
+            .json({ balance: findUser.dataValues?.balance, user });
+        }
+      );
     }
   } catch (error) {
-    res.status(400).json({ message: "Doesn't work" });
+    return res.status(400).json({ message: "Doesn't work" });
   }
 };
 

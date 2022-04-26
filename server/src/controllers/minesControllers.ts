@@ -1,6 +1,9 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import { where } from "sequelize/types";
 const spawn = require("child_process").spawn;
+
+const Player = require("../models/player");
 
 const minesRandomizer = async (req: Request, res: Response) => {
   try {
@@ -32,8 +35,18 @@ const minesRandomizer = async (req: Request, res: Response) => {
 
 const minesBet = async (req: Request, res: Response) => {
   try {
-    const { money } = req.body;
+    const { completeNewBalance } = req.body;
+
+    const userId: number = req.body.userInfo.id;
+
+    const changeBet: Object = await Player.update(
+      { balance: Number(completeNewBalance) },
+      { where: { id: userId } }
+    );
+
+    return res.status(200).json({ userId, completeNewBalance });
   } catch (error) {
+    console.log(error);
     return res.status(400).json({ message: "Error" });
   }
 };

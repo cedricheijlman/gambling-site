@@ -17,6 +17,7 @@ const authMiddelware = async (
           return res.status(403).json("Token is not valid");
         }
         req.body.userInfo = user;
+
         next();
       });
     }

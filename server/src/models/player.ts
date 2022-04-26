@@ -26,7 +26,7 @@ const Player = db.define(
       allowNull: false,
     },
     balance: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
   },
