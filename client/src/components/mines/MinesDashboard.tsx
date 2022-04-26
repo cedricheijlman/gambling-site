@@ -164,14 +164,26 @@ const MinesDashboard: React.FC = () => {
 
   // If player clicks on bomb
   const handleLoseGame = () => {
-    // Set new balance state
-    dispatch(
-      setBalance(
-        Number(
-          (Math.round((userMoney - betAmountValue) * 100) / 100).toFixed(2)
-        )
-      )
+    const loseCompleteNewBalance = Number(
+      (Math.round((userMoney - betAmountValue) * 100) / 100).toFixed(2)
     );
+
+    // Set new balance state
+    dispatch(setBalance(loseCompleteNewBalance));
+
+    // Set New Balance Backend Request
+    const newBalanceHeaders: AxiosRequestHeaders = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    };
+
+    Axios.post(
+      `${process.env.REACT_APP_BACKEND}/api/minesBet`,
+      { completeNewBalance: loseCompleteNewBalance },
+      { headers: newBalanceHeaders }
+    ).then((res) => {
+      console.log(res);
+    });
 
     // Set checked mines
     setCheckedMines(fullyCheckedPlayboard);
