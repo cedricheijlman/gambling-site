@@ -122,7 +122,16 @@ const playerRegister = async (req: Request, res: Response) => {
   }
 };
 
+const claimWelcomeBonus = async (req: Request, res: Response) => {
+  try {
+    res.status(200).json("Message");
+  } catch (error) {
+    res.status(400).json("Error");
+  }
+};
+
 module.exports = {
   playerLogin,
   playerRegister,
+  claimWelcomeBonus,
 };

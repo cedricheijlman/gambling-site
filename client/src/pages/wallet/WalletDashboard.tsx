@@ -6,6 +6,11 @@ const WalletDashboard: React.FC = () => {
   const userBalance = useSelector((state: any) => state.balance.balance);
   const userName = useSelector((state: any) => state.currentUser.username);
 
+  // Handle claim Welcome Bonus
+  const handleBonus = () => {
+    console.log("handle");
+  };
+
   return (
     <div className="walletDashboard">
       <div className="userWallet">
@@ -15,7 +20,13 @@ const WalletDashboard: React.FC = () => {
       </div>
 
       <div className="claimBonus">
-        <button>Claim Welcome Bonus</button>
+        <button
+          onClick={() => {
+            handleBonus();
+          }}
+        >
+          Claim Welcome Bonus
+        </button>
       </div>
     </div>
   );
