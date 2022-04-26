@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MinesDashboard from "../../components/mines/MinesDashboard";
 import { setBalance } from "../../features/balance/balanceSlice";
 import {
+  setUserId,
   setUsername,
   userLoggedIn,
 } from "../../features/currentUser/currentUserSlice";
@@ -37,6 +38,7 @@ export const Dashboard: React.FC = () => {
         dispatch(userLoggedIn());
         dispatch(setUsername(res.data.username));
         dispatch(setBalance(res.data.balance));
+        dispatch(setUserId(res.data.id));
       })
       .catch((err: Error) => {
         window.location.pathname = "/";
