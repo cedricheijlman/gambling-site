@@ -52,8 +52,12 @@ const MinesDashboard: React.FC = () => {
 
   // Change bet amount value
   const changeBetAmountValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (Number(e.target.value) >= 0 && Number(e.target.value) <= userMoney) {
-      setBetAmountValue(Number(e.target.value));
+    if (
+      isFinite(Number(e.target.value)) &&
+      Number(e.target.value) <= userMoney &&
+      gameStart == false
+    ) {
+      setBetAmountValue(e.target.value);
     }
   };
 
@@ -243,7 +247,9 @@ const MinesDashboard: React.FC = () => {
             <input value={betAmountValue} onChange={changeBetAmountValue} />
             <button
               onClick={() => {
-                setBetAmountValue(userMoney);
+                if (gameStart == false) {
+                  setBetAmountValue(userMoney);
+                }
               }}
               className="maxButton"
             >
