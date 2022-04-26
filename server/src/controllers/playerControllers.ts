@@ -104,7 +104,7 @@ const playerRegister = async (req: Request, res: Response) => {
         username: username,
         email: email,
         id: newUser.dataValues.id,
-        balance: 0,
+        balance: 500,
       },
       String(process.env.SECRET_CODE)
     );

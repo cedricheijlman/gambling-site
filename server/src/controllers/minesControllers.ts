@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import jwt from "jsonwebtoken";
 const spawn = require("child_process").spawn;
 
 const minesRandomizer = async (req: Request, res: Response) => {
@@ -25,9 +26,31 @@ const minesRandomizer = async (req: Request, res: Response) => {
       console.log(data.toString());
     });
   } catch (error) {
-    res.status(400).json({ message: "error" });
+    return res.status(400).json({ message: "error" });
   }
 };
+
+const minesBet = async (req: Request, res: Response) => {
+  try {
+    const accessToken = req.headers.authorization;
+
+    if (accessToken) {
+      const token: string | number = accessToken.split(" ")[1];
+
+      jwt.verify(token, String(process.env.SECRET_CODE), (err, user) => {
+        if (err) {
+          return res.status(403).json("error");
+        }
+
+        return res.status(200).json(user);
+      });
+    }
+  } catch (error) {
+    return res.status(400).json({ message: "Error" });
+  }
+};
+
 module.exports = {
   minesRandomizer,
+  minesBet,
 };
