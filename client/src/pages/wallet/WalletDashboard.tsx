@@ -1,5 +1,5 @@
 import Axios, { AxiosRequestHeaders } from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setBalance } from "../../features/balance/balanceSlice";
 import { setWelcomeBonus } from "../../features/currentUser/currentUserSlice";
@@ -42,12 +42,31 @@ const WalletDashboard: React.FC = () => {
       });
   };
 
+  // Bet Amount
+  const [betAmountValue, setBetAmountValue] = useState<any>("");
+
+  // Change bet amount value
+  const changeBetAmountValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (isFinite(Number(e.target.value))) {
+      setBetAmountValue(e.target.value);
+    }
+  };
+
   return (
     <div className="walletDashboard">
       <div className="userWallet">
         <h2>{userName}'s Wallet</h2>
         <p>Current Balance</p>
         <h4>${userBalance}</h4>
+      </div>
+
+      <div className="depositWallet">
+        <input
+          value={betAmountValue}
+          onChange={changeBetAmountValue}
+          placeholder="Enter Deposit Amount"
+        />
+        <button>Deposit</button>
       </div>
 
       <div className="claimBonus">
