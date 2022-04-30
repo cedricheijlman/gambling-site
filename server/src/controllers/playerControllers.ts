@@ -152,9 +152,22 @@ const claimWelcomeBonus = async (req: Request, res: Response) => {
 
 const depositWallet = async (req: Request, res: Response) => {
   try {
-    const { userId } = req.body;
-    return res.status(200).json({ message: "Worked" });
+    const { userId, depositAmount } = req.body;
+
+    const findUser = await Player.findOne({ where: { id: userId } });
+
+    if (!findUser) {
+      return res.status(401).json({ message: "User doesn't exist" });
+    }
+
+    const addDeposit = await Player.increment(
+      { balance: +depositAmount },
+      { where: { id: userId } }
+    );
+
+    return res.status(200).json({ message: "Worked", userId: userId });
   } catch (error) {
+    console.log(error);
     return res.status(400).json({ Error: "word" });
   }
 };

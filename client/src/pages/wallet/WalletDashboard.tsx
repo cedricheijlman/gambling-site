@@ -16,13 +16,14 @@ const WalletDashboard: React.FC = () => {
   // Dispatch
   let dispatch = useDispatch();
 
+  // Authorization Header
+  const headers: AxiosRequestHeaders = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  };
+
   // Handle claim Welcome Bonus
   const handleBonus = () => {
-    const headers: AxiosRequestHeaders = {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    };
-
     Axios.post(
       `${process.env.REACT_APP_BACKEND}/api/claimBonus`,
       {
@@ -43,12 +44,35 @@ const WalletDashboard: React.FC = () => {
   };
 
   // Bet Amount
-  const [betAmountValue, setBetAmountValue] = useState<any>("");
+  const [depositAmount, setDepositAmount] = useState<number | string>("");
 
   // Change bet amount value
   const changeBetAmountValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (isFinite(Number(e.target.value))) {
-      setBetAmountValue(e.target.value);
+      setDepositAmount(e.target.value);
+    }
+  };
+
+  // Deposit Amount to backend
+  const depositToBackend = () => {
+    if (Number(depositAmount) > 0) {
+      Axios.post(
+        `${process.env.REACT_APP_BACKEND}/api/depositWallet`,
+        { depositAmount: depositAmount, userId: userId },
+        { headers: headers }
+      )
+        .then(async (res: any) => {
+          const newDeposit = await Number(
+            (Math.round(Number(depositAmount) * 100) / 100).toFixed(2)
+          );
+
+          dispatch(setBalance(userBalance + newDeposit));
+          setDepositAmount("");
+          console.log(res);
+        })
+        .catch((err: Error) => {
+          console.log("error");
+        });
     }
   };
 
@@ -62,22 +86,16 @@ const WalletDashboard: React.FC = () => {
 
       <div className="depositWallet">
         <input
-          value={betAmountValue}
+          value={depositAmount}
           onChange={changeBetAmountValue}
           placeholder="Enter Deposit Amount"
         />
-        <button>Deposit</button>
+        <button onClick={depositToBackend}>Deposit</button>
       </div>
 
       <div className="claimBonus">
         {!welcomeBonus && (
-          <button
-            onClick={() => {
-              handleBonus();
-            }}
-          >
-            Claim Welcome Bonus
-          </button>
+          <button onClick={handleBonus}>Claim Welcome Bonus</button>
         )}
 
         {welcomeBonus && (

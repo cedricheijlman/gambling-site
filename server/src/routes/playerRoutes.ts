@@ -12,6 +12,6 @@ const router = express.Router();
 router.post("/login", playerLogin);
 router.post("/register", playerRegister);
 router.post("/claimBonus", authMiddelware, claimWelcomeBonus);
-router.put("/depositWallet", authMiddelware, depositWallet);
+router.post("/depositWallet", authMiddelware, depositWallet);
 
 module.exports = router;
