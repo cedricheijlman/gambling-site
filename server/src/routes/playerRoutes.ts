@@ -4,6 +4,7 @@ const {
   playerLogin,
   playerRegister,
   claimWelcomeBonus,
+  depositWallet,
 } = require("../controllers/playerControllers");
 
 const router = express.Router();
@@ -11,5 +12,6 @@ const router = express.Router();
 router.post("/login", playerLogin);
 router.post("/register", playerRegister);
 router.post("/claimBonus", authMiddelware, claimWelcomeBonus);
+router.put("/depositWallet", authMiddelware, depositWallet);
 
 module.exports = router;

@@ -150,8 +150,18 @@ const claimWelcomeBonus = async (req: Request, res: Response) => {
   }
 };
 
+const depositWallet = async (req: Request, res: Response) => {
+  try {
+    const { userId } = req.body;
+    return res.status(200).json({ message: "Worked" });
+  } catch (error) {
+    return res.status(400).json({ Error: "word" });
+  }
+};
+
 module.exports = {
   playerLogin,
   playerRegister,
   claimWelcomeBonus,
+  depositWallet,
 };
