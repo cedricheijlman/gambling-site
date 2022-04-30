@@ -56,16 +56,15 @@ const WalletDashboard: React.FC = () => {
   // Deposit Amount to backend
   const depositToBackend = () => {
     if (Number(depositAmount) > 0) {
+      const newDeposit = Number(
+        (Math.round(Number(depositAmount) * 100) / 100).toFixed(2)
+      );
       Axios.post(
         `${process.env.REACT_APP_BACKEND}/api/depositWallet`,
-        { depositAmount: depositAmount, userId: userId },
+        { depositAmount: newDeposit, userId: userId },
         { headers: headers }
       )
         .then(async (res: any) => {
-          const newDeposit = await Number(
-            (Math.round(Number(depositAmount) * 100) / 100).toFixed(2)
-          );
-
           dispatch(setBalance(userBalance + newDeposit));
           setDepositAmount("");
           console.log(res);
